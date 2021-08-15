@@ -1,7 +1,39 @@
 <div class="container">
-  <div class="row">
+  <div class="row justify-content-md-center">
     <div class="col-md-6">
       <h3 class="text-center">Seus dados</h3>
+      <form [formGroup]="formulario">
+        <div class="input-group espacamento espacamento">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="email">
+              <img src="assets/images/usuario.png" height="23" alt="">
+            </span>
+          </div>
+          <input type="text" [ngClass]="getCssFormulario('nome')" formControlName="nome" class="form-control" id="nome"
+            placeholder="Informe seu nome">
+          <div *ngIf="formulario.get('nome')?.getError('required')" class="invalid-feedback">
+            {{mensagemDeCampoObrigatorio('Nome')}}
+          </div>
+          <div *ngIf="formulario.get('nome')?.getError('minlength') || formulario.get('nome')?.getError('maxlength')"
+            class="invalid-feedback">
+            {{mensagemDeTamanhoMinimoEMaximo('Nome', 3, 255)}}
+          </div>
+        </div>
+        <div class="input-group espacamento">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="email">
+              <img src="assets/images/email.png" height="23" alt="">
+            </span>
+          </div>
+          <input type="email" readonly formControlName="email" class="form-control"
+            id="email" placeholder="Informe seu e-mail">
+        </div>
+
+        <div>
+          <button [disabled]="formulario.invalid" class="btn btn-danger botao" (click)="confirmar()">Confirmar</button>
+        </div>
+
+      </form>
     </div>
   </div>
 </div>

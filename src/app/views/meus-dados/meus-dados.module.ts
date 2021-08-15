@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MeusDadosRoutingModule } from './meus-dados-routing.module';
 import { MeusDadosComponent } from './meus-dados.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { MeusDadosComponent } from './meus-dados.component';
   ],
   imports: [
     CommonModule,
-    MeusDadosRoutingModule
+    MeusDadosRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class MeusDadosModule { }

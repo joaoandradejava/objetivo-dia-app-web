@@ -12,8 +12,15 @@ export class AutenticacaoService {
     localStorage.setItem('usuario-logado', JSON.stringify(usuarioLogado))
   }
 
-  public isLogado(): boolean{
-    return localStorage.getItem('usuario-logado') != null? true : false
+  public isLogado(): boolean {
+    return localStorage.getItem('usuario-logado') != null ? true : false
+  }
+
+  public getUsuarioAutenticado(): UsuarioLogado {
+    var dado: UsuarioLogado = JSON.parse(localStorage.getItem('usuario-logado')!);
+
+    return dado;
+
   }
 
   public sair(): void {

@@ -1,13 +1,13 @@
 <div class="container" >
   <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+    <a [routerLink]="['/meus-objetivos']" routerLinkActive="router-link-active"  class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
       <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
       <span class="fs-4">Objetivo do Dia App</span>
     </a>
 
     <ul class="nav nav-pills">
-      <li class="nav-item"><a [routerLink]="['/meus-objetivos']" routerLinkActive="active"  class="nav-link" aria-current="page">meus-objetivos</a></li>
-      <li class="nav-item"><a [routerLink]="['/meus-dados']" routerLinkActive="active"  class="nav-link" aria-current="page">meus-objetivos</a></li>
+      <li class="nav-item"><a [routerLink]="['/meus-objetivos']" routerLinkActive="active"  class="nav-link" aria-current="page">Meus objetivos</a></li>
+      <li class="nav-item"><a [routerLink]="['/meus-dados']" routerLinkActive="active"  class="nav-link" aria-current="page">Meus dados</a></li>
 
       <li class="nav-item"><a  (click)="sair()" [routerLink]="['/login']" routerLinkActive="router-link-active"  class="nav-link">Sair</a></li>
     </ul>

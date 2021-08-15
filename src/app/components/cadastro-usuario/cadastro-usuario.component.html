@@ -1,12 +1,20 @@
 <div>
-  <h3 class="text-center">Faça seu cadastro</h3>
+  <h3 class="text-center">Crie uma nova conta</h3>
 </div>
 
 <div class="card-component">
+  <div class="instrucao">
+    <h3>Inscrever-se</h3>
+    <p>por favor preencha este formulário para criar uma conta</p>
+  </div>
   <div>
     <form [formGroup]="formulario">
-      <div class="form-group">
-        <label for="nome">Nome</label>
+      <div class="input-group espacamento">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="email">
+            <img src="assets/images/usuario.png" height="23" alt="">
+          </span>
+        </div>
         <input type="text" [ngClass]="getCssFormulario('nome')" formControlName="nome" class="form-control" id="nome"
           placeholder="Informe seu nome">
         <div *ngIf="formulario.get('nome')?.getError('required')" class="invalid-feedback">
@@ -17,8 +25,12 @@
           {{mensagemDeTamanhoMinimoEMaximo('Nome', 3, 255)}}
         </div>
       </div>
-      <div class="form-group">
-        <label for="email">E-mail</label>
+      <div class="input-group espacamento">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="email">
+            <img src="assets/images/email.png" height="23" alt="">
+          </span>
+        </div>
         <input type="email" [ngClass]="getCssFormulario('email')" formControlName="email" class="form-control"
           id="email" placeholder="Informe seu e-mail">
         <div *ngIf="formulario.get('email')?.getError('required')" class="invalid-feedback">
@@ -32,8 +44,12 @@
           {{mensagemCampoInvalido('Email')}}
         </div>
       </div>
-      <div class="form-group">
-        <label for="senha">Senha</label>
+      <div class="input-group espacamento">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="email">
+            <img src="assets/images/senha.png" height="23" alt="">
+          </span>
+        </div>
         <input type="password" [ngClass]="getCssFormulario('senha')" formControlName="senha" class="form-control"
           id="senha" placeholder="Informe sua senha">
         <div *ngIf="formulario.get('senha')?.getError('required')" class="invalid-feedback">
@@ -44,8 +60,12 @@
           {{mensagemDeTamanhoMinimoEMaximo('Senha', 1, 255)}}
         </div>
       </div>
-      <div class="form-group">
-        <label for="confirmacao-senha">Confirmação da Senha</label>
+      <div class="input-group espacamento">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="email">
+            <img src="assets/images/senha.png" height="23" alt="">
+          </span>
+        </div>
         <input type="password" [ngClass]="getCssFormulario('confirmacaoSenha')" formControlName="confirmacaoSenha"
           class="form-control" id="confirmacao-senha" placeholder="Confirme sua senha">
         <div *ngIf="formulario.get('confirmacaoSenha')?.getError('required')" class="invalid-feedback">

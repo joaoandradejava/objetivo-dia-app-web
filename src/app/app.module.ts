@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenJwtInterceptor } from './interceptors/token-jwt-interceptor';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,11 @@ import { HttpClientModule, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/c
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenJwtInterceptor,
       multi: true
     }
   ],
