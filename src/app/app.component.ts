@@ -1,3 +1,4 @@
+import { AutenticacaoService } from './services/autenticacao.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'objetivo-do-dia-angular';
+
+  constructor(private autenticacaoService: AutenticacaoService){}
+
+  public isLogado(): boolean{
+    return this.autenticacaoService.isLogado()
+  }
 }

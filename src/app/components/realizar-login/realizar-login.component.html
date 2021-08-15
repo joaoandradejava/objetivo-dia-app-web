@@ -13,7 +13,7 @@
         <label for="senha">Senha</label>
         <input type="password" formControlName="senha" class="form-control" id="senha" placeholder="Informe sua senha">
       </div>
-      <button type="submit" class="btn btn-success botao-entrar" [disabled]="formularioDeLogin.invalid">Entrar</button>
+      <button type="submit" (click)="realizarLogin()" class="btn btn-success botao-entrar" [disabled]="formularioDeLogin.invalid">Entrar</button>
       <div>
         <p class="text-center">É novo aqui? <a class="link-primary link-cursor" (click)="realizarCadastro()">Criar uma conta</a></p>
       </div>

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-md-center">
-    <div class="col-sm-4">
+    <div class="col-md-4">
       <div class="card-component">
         <app-realizar-login *ngIf="!isRealizarCadastro" (mudarEvent)="trocar()"></app-realizar-login>
         <app-cadastro-usuario *ngIf="isRealizarCadastro" (realizarLoginEvent)="trocar()" ></app-cadastro-usuario>

@@ -4,26 +4,64 @@
 
 <div class="card-component">
   <div>
-    <form>
+    <form [formGroup]="formulario">
       <div class="form-group">
         <label for="nome">Nome</label>
-        <input type="text" class="form-control" id="nome" placeholder="Informe seu nome">
+        <input type="text" [ngClass]="getCssFormulario('nome')" formControlName="nome" class="form-control" id="nome"
+          placeholder="Informe seu nome">
+        <div *ngIf="formulario.get('nome')?.getError('required')" class="invalid-feedback">
+          {{mensagemDeCampoObrigatorio('Nome')}}
+        </div>
+        <div *ngIf="formulario.get('nome')?.getError('minlength') || formulario.get('nome')?.getError('maxlength')"
+          class="invalid-feedback">
+          {{mensagemDeTamanhoMinimoEMaximo('Nome', 3, 255)}}
+        </div>
       </div>
       <div class="form-group">
         <label for="email">E-mail</label>
-        <input type="email" class="form-control" id="email" placeholder="Informe seu e-mail">
+        <input type="email" [ngClass]="getCssFormulario('email')" formControlName="email" class="form-control"
+          id="email" placeholder="Informe seu e-mail">
+        <div *ngIf="formulario.get('email')?.getError('required')" class="invalid-feedback">
+          {{mensagemDeCampoObrigatorio('Email')}}
+        </div>
+        <div *ngIf="formulario.get('email')?.getError('minlength') || formulario.get('email')?.getError('maxlength')"
+          class="invalid-feedback">
+          {{mensagemDeTamanhoMinimoEMaximo('Email', 1, 255)}}
+        </div>
+        <div *ngIf="formulario.get('email')?.getError('email')" class="invalid-feedback">
+          {{mensagemCampoInvalido('Email')}}
+        </div>
       </div>
       <div class="form-group">
         <label for="senha">Senha</label>
-        <input type="password" class="form-control" id="senha" placeholder="Informe sua senha">
+        <input type="password" [ngClass]="getCssFormulario('senha')" formControlName="senha" class="form-control"
+          id="senha" placeholder="Informe sua senha">
+        <div *ngIf="formulario.get('senha')?.getError('required')" class="invalid-feedback">
+          {{mensagemDeCampoObrigatorio('Senha')}}
+        </div>
+        <div *ngIf="formulario.get('senha')?.getError('minlength') || formulario.get('senha')?.getError('maxlength')"
+          class="invalid-feedback">
+          {{mensagemDeTamanhoMinimoEMaximo('Senha', 1, 255)}}
+        </div>
       </div>
       <div class="form-group">
         <label for="confirmacao-senha">Confirmação da Senha</label>
-        <input type="password" class="form-control" id="confirmacao-senha" placeholder="Confirme sua senha">
+        <input type="password" [ngClass]="getCssFormulario('confirmacaoSenha')" formControlName="confirmacaoSenha"
+          class="form-control" id="confirmacao-senha" placeholder="Confirme sua senha">
+        <div *ngIf="formulario.get('confirmacaoSenha')?.getError('required')" class="invalid-feedback">
+          {{mensagemDeCampoObrigatorio('Confirmação da Senha')}}
+        </div>
+        <div
+          *ngIf="formulario.get('confirmacaoSenha')?.getError('minlength') || formulario.get('confirmacaoSenha')?.getError('maxlength')"
+          class="invalid-feedback">
+          {{mensagemDeTamanhoMinimoEMaximo('Confirmação da Senha', 1, 255)}}
+        </div>
       </div>
-      <button type="submit" class="btn btn-success botao-cadastro">Cadastrar</button>
+      <button type="submit" [disabled]="formulario.invalid" (click)="realizarCadastro()"
+        class="btn btn-success botao-cadastro">Cadastrar</button>
       <div>
-        <p class="text-center">Deseja realizar o login? <a class="link-primary link-cursor" (click)="realizarLogin()">login</a></p>
+        <p class="text-center">Deseja realizar o login? <a class="link-primary link-cursor"
+            (click)="realizarLogin()">login</a></p>
       </div>
     </form>
   </div>
