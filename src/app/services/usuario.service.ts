@@ -1,3 +1,4 @@
+import { MudancaSenhaInput } from './../models/mudanca-senha-input';
 import { UsuarioUpdateInput } from './../models/usuario-update-input';
 import { Login } from './../models/login';
 import { Backend } from './../utils/backend';
@@ -23,6 +24,10 @@ export class UsuarioService {
 
   public atualizar(id: number, usuarioUpdateInput: UsuarioUpdateInput): Observable<any> {
     return this.http.put(Backend.usuarios + `/${id}`, usuarioUpdateInput)
+  }
+
+  public mudarSenha(id: number, mudancaSenhaInput: MudancaSenhaInput): Observable<any> {
+    return this.http.put(Backend.usuarios + `/${id}/senha`, mudancaSenhaInput)
   }
 
   public buscarResumoPorId(id: number): Observable<any> {

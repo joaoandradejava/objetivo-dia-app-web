@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-6">
+      <a class="link-primary" [routerLink]="['/meus-dados']" routerLinkActive="router-link-active" >Voltar</a>
+      <h3 class="text-center">Mudar senha</h3>
+      <form [formGroup]="formulario">
+        <div class="form-group">
+          <label for="">Senha Atual</label>
+          <input type="password" [ngClass]="getCssFormulario('senhaAtual')" formControlName="senhaAtual"
+            class="form-control" id="nome" placeholder="Informe sua senha atual">
+          <div *ngIf="formulario.get('senhaAtual')?.getError('required')" class="invalid-feedback">
+            {{mensagemDeCampoObrigatorio('Senha Atual')}}
+          </div>
+          <div
+            *ngIf="formulario.get('senhaAtual')?.getError('minlength') || formulario.get('senhaAtual')?.getError('maxlength')"
+            class="invalid-feedback">
+            {{mensagemDeTamanhoMinimoEMaximo('Senha Atual', 1, 255)}}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="">Nova Senha</label>
+          <input type="password" [ngClass]="getCssFormulario('novaSenha')" formControlName="novaSenha"
+            class="form-control" id="nome" placeholder="Nova Senha">
+          <div *ngIf="formulario.get('novaSenha')?.getError('required')" class="invalid-feedback">
+            {{mensagemDeCampoObrigatorio('Nova Senha')}}
+          </div>
+          <div
+            *ngIf="formulario.get('novaSenha')?.getError('minlength') || formulario.get('novaSenha')?.getError('maxlength')"
+            class="invalid-feedback">
+            {{mensagemDeTamanhoMinimoEMaximo('Nova Senha', 1, 255)}}
+          </div>
+        </div>
+        <div class="form-group espacamento">
+         <label for="">Confirmação da Senha</label>
+          <input type="password" [ngClass]="getCssFormulario('confirmacaoSenha')" formControlName="confirmacaoSenha"
+            class="form-control" id="nome" placeholder="Confirmação da senha">
+          <div *ngIf="formulario.get('confirmacaoSenha')?.getError('required')" class="invalid-feedback">
+            {{mensagemDeCampoObrigatorio('Confirmação da Senha')}}
+          </div>
+          <div
+            *ngIf="formulario.get('confirmacaoSenha')?.getError('minlength') || formulario.get('confirmacaoSenha')?.getError('maxlength')"
+            class="invalid-feedback">
+            {{mensagemDeTamanhoMinimoEMaximo('Confirmação da Senha', 1, 255)}}
+          </div>
+        </div>
+        <div>
+          <button class="btn btn-danger botao" [disabled]="formulario.invalid" (click)="mudarSenha()">Mudar
+            Senha</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

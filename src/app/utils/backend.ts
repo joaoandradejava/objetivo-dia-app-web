@@ -10,4 +10,8 @@ export class Backend {
   public static get usuarios(): string {
     return this.servidor + 'usuarios'
   }
+
+  public static objetivos(id: number): string {
+    return this.usuarios + `/${id}/objetivos`
+  }
 }

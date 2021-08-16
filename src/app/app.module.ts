@@ -15,6 +15,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenJwtInterceptor } from './interceptors/token-jwt-interceptor';
+import { CardObjetivoItemComponent } from './components/card-objetivo-item/card-objetivo-item.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TokenJwtInterceptor } from './interceptors/token-jwt-interceptor';
     LoginComponent,
     MeusObjetivosComponent,
     CadastroUsuarioComponent,
-    RealizarLoginComponent
+    RealizarLoginComponent,
+    CardObjetivoItemComponent
   ],
   imports: [
     BrowserModule,

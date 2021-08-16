@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'meus-objetivos', pathMatch: 'full' },
   { path: 'meus-objetivos', component: MeusObjetivosComponent, canActivate: [AutenticadoGuard] },
   { path: 'login', component: LoginComponent, canActivate: [NaoAutenticadoGuard] },
-  { path: 'meus-dados', loadChildren: () => import('./views/meus-dados/meus-dados.module').then(m => m.MeusDadosModule) }
+  { path: 'meus-dados', loadChildren: () => import('./views/meus-dados/meus-dados.module').then(m => m.MeusDadosModule), canActivate: [AutenticadoGuard] },
+  { path: 'mudar-senha', loadChildren: () => import('./views/mudar-senha/mudar-senha.module').then(m => m.MudarSenhaModule) }
 ];
 
 @NgModule({

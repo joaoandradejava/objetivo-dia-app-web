@@ -1,5 +1,58 @@
 <div class="container">
   <div class="row">
+    <div class="col-md-12">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#novoModal">
+        Criar
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div *ngIf="objetivoModelPage?.totalElements != undefined && objetivoModelPage!.totalElements > 0">
+        <div *ngFor="let objetivo of objetivoModelPage?.content">
+          <app-card-objetivo-item [objetivoModel]="objetivo" (buscarTodosEmitter)="buscarTodos()"></app-card-objetivo-item>
+        </div>
+      </div>
+      <div *ngIf="objetivoModelPage?.totalElements == undefined || objetivoModelPage!.totalElements == 0">
+        <h1 class="text-center">Você ainda não possui nenhum objetivo!</h1>
+      </div>
+    </div>
+  </div>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
+    </ul>
+  </nav>
+</div>
 
+
+<div class="modal fade" id="novoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="novoModal">Objetivo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup]="formulario">
+          <div class="form-group">
+            <span>Titulo</span>
+            <input type="text" formControlName="titulo" class="form-control">
+          </div>
+
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="formulario.invalid"
+          (click)="salvar()">Salvar</button>
+      </div>
+    </div>
   </div>
 </div>
