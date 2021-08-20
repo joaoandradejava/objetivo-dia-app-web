@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 import { MensagemService } from 'src/app/services/mensagem.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { CorProgresso } from 'src/app/utils/cor-progresso';
 
 @Component({
   selector: 'app-card-objetivo-item',
@@ -34,6 +35,10 @@ export class CardObjetivoItemComponent implements OnInit {
 
   public buscar(): void {
     this.formularioEditar.get('titulo')?.setValue(this.objetivoModel?.titulo)
+  }
+
+  corProgresso(): string {
+    return CorProgresso.corProgresso(this.objetivoModel!.porcentagem)
   }
 
   public deletarPorId(): void {

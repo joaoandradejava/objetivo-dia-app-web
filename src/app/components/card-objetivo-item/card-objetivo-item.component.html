@@ -1,6 +1,11 @@
 <div class="card-objetivo">
+  <div [routerLink]="['/meus-objetivos/' + objetivoModel?.id + '/minhas-tarefas']" class="area-clicavel item-chart" >
+    <circle-progress [percent]=objetivoModel!.porcentagem [radius]="45" [outerStrokeWidth]="5" [innerStrokeWidth]="5"
+      [outerStrokeColor]="corProgresso()" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="1000">
+    </circle-progress>
+  </div>
   <div [routerLink]="['/meus-objetivos/' + objetivoModel?.id + '/minhas-tarefas']" class="item">
-    <h6>{{objetivoModel?.titulo}}</h6>
+    <h6>{{objetivoModel?.titulo}} - {{objetivoModel?.porcentagem}}%</h6>
     <p class="info">{{objetivoModel?.data | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
   </div>
   <div>

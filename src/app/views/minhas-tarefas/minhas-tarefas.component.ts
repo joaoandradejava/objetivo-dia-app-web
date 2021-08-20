@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MensagemService } from 'src/app/services/mensagem.service';
 import { ActivatedRoute } from '@angular/router';
 import { AutenticacaoService } from 'src/app/services/autenticacao.service';
+import { CorProgresso } from 'src/app/utils/cor-progresso';
 
 @Component({
   selector: 'app-minhas-tarefas',
@@ -30,14 +31,23 @@ export class MinhasTarefasComponent implements OnInit {
 
   }
 
+  public corProgresso(): any{
+    return CorProgresso.corProgressoBootstrap(this.objetivoModel!.porcentagem)
+  }
+
   ngOnInit(): void {
-    this.objetivoService.buscarPorId(this.autenticacaoService.getUsuarioAutenticado().id, this.objetivoId).subscribe(data => {
-      this.objetivoModel = data
-    })
     this.buscarTodasTarefas()
   }
 
+  buscarObjetivo(): void {
+    this.objetivoService.buscarPorId(this.autenticacaoService.getUsuarioAutenticado().id, this.objetivoId).subscribe(data => {
+      this.objetivoModel = data
+    })
+  }
+
   buscarTodasTarefas(): void {
+    this.buscarObjetivo()
+
     this.tarefaService.buscarTarefas(this.objetivoId).subscribe(data => {
       this.tarefas = data
       this.tarefas = this.tarefas.sort(x => -x.id)

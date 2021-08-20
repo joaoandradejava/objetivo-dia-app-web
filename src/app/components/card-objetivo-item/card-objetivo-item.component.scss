@@ -4,8 +4,10 @@
   justify-content: space-between;
   flex-flow: row wrap;
   align-items: center;
-  padding: 15px 5px;
+  padding: 10px 5px;
   margin: 10px 0;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 7px;
 }
 
 .area-clicavel {
@@ -20,7 +22,11 @@
   margin-right: 10px;
 }
 
+.item-chart{
+  margin-right: 30px;
+}
+
 .item {
-  flex-grow: 2;
+  flex-grow: 3;
   cursor: pointer;
 }

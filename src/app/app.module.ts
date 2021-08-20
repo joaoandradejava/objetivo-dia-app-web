@@ -22,7 +22,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
-import { CardTarefaComponent } from './components/card-tarefa/card-tarefa.component';
+import { NgCircleProgressModule } from 'ng-circle-progress';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 
 @NgModule({
   declarations: [
@@ -48,9 +49,24 @@ import { CardTarefaComponent } from './components/card-tarefa/card-tarefa.compon
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     BsDropdownModule.forRoot(),
-    NgxBootstrapIconsModule.pick(allIcons)
+    NgxBootstrapIconsModule.pick(allIcons),
+    NgCircleProgressModule.forRoot({
+      "backgroundGradient": true,
+      "backgroundColor": "#ffffff",
+      "backgroundGradientStopColor": "#c0c0c0",
+      "backgroundOpacity": 0,
+      "backgroundPadding": -10,
+      "radius": 70,
+      "maxPercent": 100,
+      "outerStrokeWidth": 10,
+      "outerStrokeColor": "#0791f2",
+      "innerStrokeWidth": 0,
+      "subtitleColor": "#444444",
+      "showInnerStroke": false,
+      "startFromZero": false}),
+    ProgressbarModule.forRoot()
 
-    ],
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

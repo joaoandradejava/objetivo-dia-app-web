@@ -6,6 +6,7 @@ import { MinhasTarefasComponent } from './minhas-tarefas.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CardTarefaComponent } from 'src/app/components/card-tarefa/card-tarefa.component';
 import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
     CommonModule,
     MinhasTarefasRoutingModule,
     ReactiveFormsModule,
-    NgxBootstrapIconsModule.pick(allIcons)
+    NgxBootstrapIconsModule.pick(allIcons),
+    ProgressbarModule.forRoot()
 
   ]
 })

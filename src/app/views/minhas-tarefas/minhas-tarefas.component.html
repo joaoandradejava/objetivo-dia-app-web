@@ -7,6 +7,8 @@
 
   <div class="row espacamento">
     <h1 class="text-center espacamento">{{objetivoModel?.titulo}}</h1>
+    <progressbar *ngIf="objetivoModel?.porcentagem != undefined" class="espacamento" [max]="100"
+      [value]="objetivoModel!.porcentagem" [type]="corProgresso()">{{objetivoModel?.porcentagem}} %</progressbar>
     <div class="col-sm-10">
       <form [formGroup]="formGroup">
         <input type="text" formControlName="titulo" class="form-control" placeholder="Informe a tarefa">
