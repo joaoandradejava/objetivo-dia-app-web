@@ -2,6 +2,12 @@
   <div class="row">
     <div class="col">
       <h1 class="text-center">Gráfico dos Objetivos concluidos</h1>
+      <div id="chart">
+        <apx-chart *ngIf="graficoObjetivoConcluidoDto != undefined" [series]="chartOptions.series" [chart]="chartOptions.chart" [dataLabels]="chartOptions.dataLabels"
+          [plotOptions]="chartOptions.plotOptions" [yaxis]="chartOptions.yaxis" [xaxis]="chartOptions.xaxis"
+          [legend]="chartOptions.legend" [colors]="chartOptions.colors" [grid]="chartOptions.grid"></apx-chart>
+      </div>
+
     </div>
   </div>
 </div>

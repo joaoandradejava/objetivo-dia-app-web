@@ -30,4 +30,8 @@ export class ObjetivoService {
   public atualizar(id: number, objetivoId: number, objetivoInput: ObjetivoInput): Observable<any> {
     return this.http.put(Backend.objetivos(id) + `/${objetivoId}`, objetivoInput)
   }
+
+  public graficoDosObjetivosConcluidos(usuarioId: number): Observable<any> {
+    return this.http.get(Backend.objetivos(usuarioId) + '/grafico-conclusao')
+  }
 }

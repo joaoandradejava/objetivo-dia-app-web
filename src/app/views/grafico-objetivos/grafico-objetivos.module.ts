@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { GraficoObjetivosRoutingModule } from './grafico-objetivos-routing.module';
 import { GraficoObjetivosComponent } from './grafico-objetivos.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { GraficoObjetivosComponent } from './grafico-objetivos.component';
   ],
   imports: [
     CommonModule,
-    GraficoObjetivosRoutingModule
+    GraficoObjetivosRoutingModule,
+    NgApexchartsModule,
   ]
 })
 export class GraficoObjetivosModule { }
