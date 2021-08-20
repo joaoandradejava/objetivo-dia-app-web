@@ -1,18 +1,26 @@
-.card-objetivo{
+.card-objetivo {
   border: 1px solid rgb(221, 218, 218);
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-flow: row wrap;
   align-items: center;
   padding: 15px 5px;
   margin: 10px 0;
+}
+
+.area-clicavel {
   cursor: pointer;
 }
 
-.info{
+.info {
   color: rgb(92, 92, 92);
 }
 
-.botao{
+.botao {
   margin-right: 10px;
+}
+
+.item {
+  flex-grow: 2;
+  cursor: pointer;
 }

@@ -12,18 +12,23 @@
       <div class="btn-group" dropdown>
         <button id="button-basic" dropdownToggle type="button" class="btn btn-default dropdown-toggle"
           aria-controls="dropdown-basic">
-          {{nomeUsuarioLogado()}} <span class="caret"></span>
+          {{nomeUsuarioLogado()}} <i-bs name="person-circle" width="20" height="20">
+          </i-bs> <span class="caret"></span>
         </button>
         <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
           <li role="menuitem"><a class="dropdown-item" [routerLink]="['/meus-dados']"
-              routerLinkActive="router-link-active">Meus dados</a></li>
+              routerLinkActive="router-link-active">Meus dados <i-bs name="pencil-square" width="20" height="20">
+              </i-bs></a></li>
           <li role="menuitem"><a class="dropdown-item" [routerLink]="['/meus-objetivos']"
-              routerLinkActive="router-link-active">Meus objetivos</a></li>
+              routerLinkActive="router-link-active">Meus objetivos <i-bs name="trophy" width="20" height="20">
+              </i-bs></a></li>
           <li role="menuitem"><a class="dropdown-item" [routerLink]="['/deletar-conta']"
-              routerLinkActive="router-link-active">Deletar Conta</a></li>
+              routerLinkActive="router-link-active">Deletar Conta <i-bs name="trash" width="20" height="20">
+              </i-bs></a></li>
           <li class="divider dropdown-divider"></li>
           <li role="menuitem"><a class="dropdown-item" (click)="sair()" [routerLink]="['/login']"
-              routerLinkActive="router-link-active">Sair</a>
+              routerLinkActive="router-link-active">Sair <i-bs name="box-arrow-left" width="20" height="20">
+              </i-bs></a>
           </li>
         </ul>
       </div>

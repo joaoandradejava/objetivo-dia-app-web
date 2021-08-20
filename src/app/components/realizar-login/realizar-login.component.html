@@ -26,6 +26,31 @@
         <p class="text-center">É novo aqui? <a class="link-primary link-cursor" (click)="realizarCadastro()">Criar uma
             conta</a></p>
       </div>
+      <div class="esqueceu-senha">
+        <p class="text-center" (click)="openModal(esqueceusenha)" style="margin-top: 15px;"><a
+            class="link-primary link-cursor">Esqueceu a senha?</a></p>
+      </div>
     </form>
   </div>
 </div>
+
+<ng-template #esqueceusenha>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Esqueceu a senha</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Informe seu email, que enviaremos uma nova senha.</p>
+    <form [formGroup]="formularioDoEmail">
+      <input type="email" formControlName="email" class="form-control" placeholder="Informe o email">
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn" (click)="modalRef.hide()">Cancelar</button>
+    <button class="btn btn-primary" (click)="enviarNovaSenha()" [disabled]="formularioDoEmail.invalid">Enviar nova
+      senha</button>
+  </div>
+</ng-template>

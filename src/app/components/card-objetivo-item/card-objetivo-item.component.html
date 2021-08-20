@@ -1,15 +1,17 @@
 <div class="card-objetivo">
-  <div>
+  <div [routerLink]="['/meus-objetivos/' + objetivoModel?.id + '/minhas-tarefas']" class="item">
     <h6>{{objetivoModel?.titulo}}</h6>
     <p class="info">{{objetivoModel?.data | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
   </div>
   <div>
     <button type="button" class="btn btn-primary botao" (click)="openModal(template)" data-bs-toggle="modal"
       data-bs-target="#editarModal">
-      Editar
+      <i-bs name="pencil-square" width="20" height="20">
+      </i-bs>
     </button>
     <button class="btn btn-danger" (click)="openModal(confirmTemplate)">
-      Deletar
+      <i-bs name="trash-fill" width="20" height="20">
+      </i-bs>
     </button>
   </div>
 </div>

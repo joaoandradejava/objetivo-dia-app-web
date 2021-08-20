@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <a class="link-primary" [routerLink]="['/meus-objetivos']" routerLinkActive="router-link-active">Voltar</a>
+    </div>
+  </div>
+
+  <div class="row espacamento">
+    <h1 class="text-center espacamento">{{objetivoModel?.titulo}}</h1>
+    <div class="col-sm-10">
+      <form [formGroup]="formGroup">
+        <input type="text" formControlName="titulo" class="form-control" placeholder="Informe a tarefa">
+      </form>
+    </div>
+    <div class="col">
+      <button [disabled]="formGroup.invalid" (click)="adicionarTarefa()" class="btn btn-success">Adicionar
+        tarefa</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col" *ngIf="tarefas!.length > 0">
+      <div *ngFor="let tarefa of tarefas">
+        <app-card-tarefa [tarefaModel]="tarefa" (atualizarListaDeTarefas)="buscarTodasTarefas()"></app-card-tarefa>
+      </div>
+    </div>
+    <div class="col" *ngIf="tarefas!.length <= 0">
+      <h2 class="text-center">Você ainda não possui tarefa</h2>
+    </div>
+  </div>
+</div>

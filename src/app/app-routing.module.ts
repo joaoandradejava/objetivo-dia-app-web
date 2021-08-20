@@ -12,7 +12,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [NaoAutenticadoGuard] },
   { path: 'meus-dados', loadChildren: () => import('./views/meus-dados/meus-dados.module').then(m => m.MeusDadosModule), canActivate: [AutenticadoGuard] },
   { path: 'mudar-senha', loadChildren: () => import('./views/mudar-senha/mudar-senha.module').then(m => m.MudarSenhaModule) },
-  { path: 'deletar-conta', component: DeletarContaComponent, canActivate: [AutenticadoGuard] }
+  { path: 'deletar-conta', component: DeletarContaComponent, canActivate: [AutenticadoGuard] },
+  { path: 'meus-objetivos/:id/minhas-tarefas', loadChildren: () => import('./views/minhas-tarefas/minhas-tarefas.module').then(m => m.MinhasTarefasModule), canActivate: [AutenticadoGuard] }
 ];
 
 @NgModule({

@@ -1,0 +1,28 @@
+.card-tarefa {
+  border: 1px solid rgba(182, 182, 182, 0.712);
+  padding: 10px 15px;
+  margin: 15px 0px;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 15px;
+  color: white;
+}
+
+.color-feita{
+  background-color: chartreuse;
+}
+
+.color-nao-feita{
+  background-color: red;
+}
+
+.tarefa-feita{
+  text-decoration: line-through;
+}
+
+.esquerda{
+  margin-left: 20px;
+}

@@ -1,3 +1,4 @@
+import { EsqueceuSenhaInput } from './../models/esqueceu-senha-input';
 import { MudancaSenhaInput } from './../models/mudanca-senha-input';
 import { UsuarioUpdateInput } from './../models/usuario-update-input';
 import { Login } from './../models/login';
@@ -18,7 +19,7 @@ export class UsuarioService {
     return this.http.post(Backend.login, login)
   }
 
-  public deletarConta(id: number): Observable<any>{
+  public deletarConta(id: number): Observable<any> {
     return this.http.delete(Backend.usuarios + `/${id}`)
   }
 
@@ -36,5 +37,9 @@ export class UsuarioService {
 
   public buscarResumoPorId(id: number): Observable<any> {
     return this.http.get(Backend.usuarios + `/${id}/resumo`)
+  }
+
+  public esqueceuSenha(esqueceuSenhaInput: EsqueceuSenhaInput): Observable<any> {
+    return this.http.put(Backend.usuarios + '/esqueci-senha', esqueceuSenhaInput)
   }
 }

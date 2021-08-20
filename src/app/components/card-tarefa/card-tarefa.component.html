@@ -1,0 +1,20 @@
+<div class="card-tarefa" [ngClass]="{'color-feita': tarefaModel?.isFeita, 'color-nao-feita': !tarefaModel?.isFeita}">
+  <div>
+    <h2 [ngClass]="{'tarefa-feita': tarefaModel?.isFeita}">{{tarefaModel?.titulo}}</h2>
+
+  </div>
+  <div>
+    <button class="btn" *ngIf="!tarefaModel?.isFeita" (click)="fazerTarefa()">
+      <i-bs name="check-circle-fill" style="color: rgb(52, 245, 3);" width="30" height="30">
+      </i-bs>
+    </button>
+    <button class="btn" *ngIf="tarefaModel?.isFeita" (click)="desfazerTarefa()">
+      <i-bs name="chevron-left" style="color: black;" width="30" height="30">
+      </i-bs>
+    </button>
+    <button class="btn esquerda" (click)="deletar()">
+      <i-bs name="trash-fill" style="color: black;" width="30" height="30">
+      </i-bs>
+    </button>
+  </div>
+</div>

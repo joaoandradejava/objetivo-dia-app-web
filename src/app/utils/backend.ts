@@ -14,4 +14,8 @@ export class Backend {
   public static objetivos(id: number): string {
     return this.usuarios + `/${id}/objetivos`
   }
+
+  public static tarefas(objetivoId: number): string {
+    return this.servidor + `objetivos/${objetivoId}/tarefas`
+  }
 }

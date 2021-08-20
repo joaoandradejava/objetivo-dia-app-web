@@ -21,6 +21,8 @@ import { DeletarContaComponent } from './views/deletar-conta/deletar-conta.compo
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
+import { CardTarefaComponent } from './components/card-tarefa/card-tarefa.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     CadastroUsuarioComponent,
     RealizarLoginComponent,
     CardObjetivoItemComponent,
-    DeletarContaComponent
+    DeletarContaComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,9 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     NgxPaginationModule,
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    NgxBootstrapIconsModule.pick(allIcons)
+
     ],
   providers: [
     {
