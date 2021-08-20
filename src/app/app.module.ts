@@ -16,6 +16,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenJwtInterceptor } from './interceptors/token-jwt-interceptor';
 import { CardObjetivoItemComponent } from './components/card-objetivo-item/card-objetivo-item.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { DeletarContaComponent } from './views/deletar-conta/deletar-conta.component'; // <-- import the module
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,8 @@ import { CardObjetivoItemComponent } from './components/card-objetivo-item/card-
     MeusObjetivosComponent,
     CadastroUsuarioComponent,
     RealizarLoginComponent,
-    CardObjetivoItemComponent
+    CardObjetivoItemComponent,
+    DeletarContaComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +41,11 @@ import { CardObjetivoItemComponent } from './components/card-objetivo-item/card-
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     HttpClientModule,
-  ],
+    NgxPaginationModule,
+    TooltipModule.forRoot(),
+    ModalModule.forRoot(),
+    BsDropdownModule.forRoot()
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

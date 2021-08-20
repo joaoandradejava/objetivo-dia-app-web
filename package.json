@@ -19,6 +19,8 @@
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
     "bootstrap": "^5.1.0",
+    "ngx-bootstrap": "^7.0.0",
+    "ngx-pagination": "^5.1.1",
     "ngx-toastr": "^14.1.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",

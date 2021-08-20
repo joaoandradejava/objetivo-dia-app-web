@@ -16,4 +16,8 @@ export class HeaderComponent implements OnInit {
   public sair(): void{
     this.autenticacaoService.sair()
   }
+
+  public nomeUsuarioLogado(): string {
+    return this.autenticacaoService.getUsuarioAutenticado().nome
+  }
 }

@@ -18,6 +18,10 @@ export class UsuarioService {
     return this.http.post(Backend.login, login)
   }
 
+  public deletarConta(id: number): Observable<any>{
+    return this.http.delete(Backend.usuarios + `/${id}`)
+  }
+
   public salvar(usuarioCreateInput: UsuarioCreateInput): Observable<any> {
     return this.http.post(Backend.usuarios, usuarioCreateInput)
   }

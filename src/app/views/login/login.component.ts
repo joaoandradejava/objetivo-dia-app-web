@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
   }
 
   public trocar(): void {
-    console.log('entrou')
     this.isRealizarCadastro = !this.isRealizarCadastro;
   }
 

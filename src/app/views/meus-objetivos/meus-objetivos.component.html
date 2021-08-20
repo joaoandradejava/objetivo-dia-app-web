@@ -10,23 +10,24 @@
     <div class="col-md-12">
       <div *ngIf="objetivoModelPage?.totalElements != undefined && objetivoModelPage!.totalElements > 0">
         <div *ngFor="let objetivo of objetivoModelPage?.content">
-          <app-card-objetivo-item [objetivoModel]="objetivo" (buscarTodosEmitter)="buscarTodos()"></app-card-objetivo-item>
+          <app-card-objetivo-item [objetivoModel]="objetivo" (buscarTodosEmitter)="buscarTodos()">
+          </app-card-objetivo-item>
         </div>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item cursor"><a class="page-link" (click)="anterior()">Antes</a></li>
+            <li class="page-item cursor" [ngClass]="{'active': i == paginaAtual}" (click)="buscarTodosPorPagina(i)"
+              *ngFor="let item of counter(); let i = index"><a class="page-link">{{i + 1}}</a></li>
+            <li class="page-item cursor"><a class="page-link" (click)="proximo()">Proximo</a></li>
+          </ul>
+        </nav>
       </div>
       <div *ngIf="objetivoModelPage?.totalElements == undefined || objetivoModelPage!.totalElements == 0">
         <h1 class="text-center">Você ainda não possui nenhum objetivo!</h1>
       </div>
     </div>
   </div>
-  <nav aria-label="Page navigation example">
-    <ul class="pagination">
-      <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
-    </ul>
-  </nav>
+
 </div>
 
 

@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2 class="text-center">Deletar a minha conta</h2>
+      <p class="text-center">é importante ressaltar que após deletar a sua conta, todos os seus dados serão excluidos.
+      </p>
+      <button class="btn btn-danger center" (click)="openModal(deletar)">DELETAR CONTA</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #deletar>
+  <div class="modal-body text-center">
+    <p>Deseja realmente deletar a sua conta?</p>
+    <button type="button" class="btn btn-default" (click)="modalRef?.hide()">CANCELAR</button>
+    <button type="button" class="btn btn-danger" (click)="deletarConta()">DELETAR</button>
+  </div>
+</ng-template>
