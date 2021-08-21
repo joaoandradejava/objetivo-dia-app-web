@@ -1,5 +1,5 @@
 <div class="card-objetivo" [ngClass]="{'objetivo-concluido': objetivoModel?.porcentagem == 100}">
-  <div [routerLink]="['/meus-objetivos/' + objetivoModel?.id + '/minhas-tarefas']" class="area-clicavel item-chart" >
+  <div [routerLink]="['/meus-objetivos/' + objetivoModel?.id + '/minhas-tarefas']" class="area-clicavel item-chart">
     <circle-progress [percent]=objetivoModel!.porcentagem [radius]="45" [outerStrokeWidth]="5" [innerStrokeWidth]="5"
       [outerStrokeColor]="corProgresso()" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="1000">
     </circle-progress>
@@ -9,8 +9,7 @@
     <p class="info">{{objetivoModel?.data | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
   </div>
   <div>
-    <button type="button" class="btn btn-primary botao" (click)="openModal(template)" data-bs-toggle="modal"
-      data-bs-target="#editarModal">
+    <button type="button" class="btn btn-primary botao" (click)="openModal(editarTemplate)">
       <i-bs name="pencil-square" width="20" height="20">
       </i-bs>
     </button>
@@ -29,7 +28,7 @@
   </div>
 </ng-template>
 
-<ng-template #template>
+<ng-template #editarTemplate>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Objetivo</h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="modalRef?.hide()">

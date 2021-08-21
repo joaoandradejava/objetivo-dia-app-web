@@ -11,8 +11,8 @@ export class ObjetivoService {
 
   constructor(private http: HttpClient) { }
 
-  public buscarTodos(id: number, pagina: number): Observable<any> {
-    return this.http.get(Backend.objetivos(id) + `?page=${pagina}`)
+  public buscarTodos(id: number, pagina: number, tamanho: number): Observable<any> {
+    return this.http.get(Backend.objetivos(id) + `?page=${pagina}&size=${tamanho}`)
   }
 
   public buscarPorId(id: number, objetivoId: number): Observable<any> {

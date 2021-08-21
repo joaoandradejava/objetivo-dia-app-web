@@ -25,6 +25,8 @@ import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -66,7 +68,9 @@ import { NgxSpinnerModule } from "ngx-spinner";
       "startFromZero": false
     }),
     ProgressbarModule.forRoot(),
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    PaginationModule.forRoot(),
+    FormsModule
 
 
   ],
