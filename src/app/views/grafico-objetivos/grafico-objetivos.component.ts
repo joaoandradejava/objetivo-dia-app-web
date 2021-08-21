@@ -57,7 +57,7 @@ export class GraficoObjetivosComponent implements OnInit {
       this.chartOptions = {
         series: [
           {
-            name: "distibuted",
+            name: "Quantidade",
             data: [this.graficoObjetivoConcluidoDto?.objetivosNaoConcluidos, this.graficoObjetivoConcluidoDto?.objetivosConcluidos]
           }
         ],
