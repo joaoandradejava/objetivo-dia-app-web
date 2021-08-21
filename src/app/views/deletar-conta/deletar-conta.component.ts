@@ -25,6 +25,7 @@ export class DeletarContaComponent implements OnInit {
       this.mensagemService.mostrarMensagemDeSucesso('Sua conta foi deletada com sucesso!')
       this.autenticacaoService.sair()
       this.router.navigate(['/login'])
+      this.modalRef?.hide()
     })
 
 

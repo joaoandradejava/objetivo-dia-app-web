@@ -1,4 +1,4 @@
-<div class="card-objetivo">
+<div class="card-objetivo" [ngClass]="{'objetivo-concluido': objetivoModel?.porcentagem == 100}">
   <div [routerLink]="['/meus-objetivos/' + objetivoModel?.id + '/minhas-tarefas']" class="area-clicavel item-chart" >
     <circle-progress [percent]=objetivoModel!.porcentagem [radius]="45" [outerStrokeWidth]="5" [innerStrokeWidth]="5"
       [outerStrokeColor]="corProgresso()" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="1000">
