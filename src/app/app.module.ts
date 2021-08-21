@@ -1,3 +1,4 @@
+import { SpinnerInterceptor } from './interceptors/spinner-interceptor';
 import { ErrorInterceptor } from './interceptors/error-interceptor';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,6 +25,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -63,8 +65,11 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
       "innerStrokeWidth": 0,
       "subtitleColor": "#444444",
       "showInnerStroke": false,
-      "startFromZero": false}),
-    ProgressbarModule.forRoot()
+      "startFromZero": false
+    }),
+    ProgressbarModule.forRoot(),
+    NgxSpinnerModule
+
 
   ],
   providers: [
@@ -76,6 +81,11 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenJwtInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SpinnerInterceptor,
       multi: true
     }
   ],
