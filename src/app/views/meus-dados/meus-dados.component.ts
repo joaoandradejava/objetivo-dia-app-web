@@ -5,13 +5,34 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 import { MensagemService } from 'src/app/services/mensagem.service';
+import { animate, keyframes, query, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-meus-dados',
   templateUrl: './meus-dados.component.html',
-  styleUrls: ['./meus-dados.component.scss']
+  styleUrls: ['./meus-dados.component.scss'],
+  animations: [
+    trigger('lista-animacao', [
+      transition(':enter', query('*', [
+        animate('500ms 0s ease-in', keyframes([
+          style({opacity: 0, transform: 'translate(-500px, 0px)', offset: 0}),
+          style({opacity: 1, transform: 'translate(0px, 0px)', offset: 1}),
+
+        ]))
+      ])),
+
+      transition(':leave', query('*', [
+        animate('300ms 0s ease-out', keyframes([
+          style({opacity: 1, transform: 'translate(0px, 0px)', offset: 0}),
+          style({opacity: 0, transform: 'translate(-500px, 0px)', offset: 1}),
+
+        ]))
+      ]))
+    ])
+  ]
 })
 export class MeusDadosComponent implements OnInit {
+  public estado: string = ''
 
   formulario: FormGroup
 

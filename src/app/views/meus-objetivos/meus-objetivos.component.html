@@ -1,5 +1,8 @@
-<div class="container">
+<div class="container" [@lista-animacao]='estado'>
   <div class="row">
+    <div class="col" *ngIf="objetivoModelPage?.totalElements != undefined && objetivoModelPage!.totalElements > 0">
+      <h2 class="text-center">Seus objetivos</h2>
+    </div>
     <div class="col-md-12">
       <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#novoModal">
         <i-bs name="plus-circle" width="20" height="20">
@@ -20,7 +23,7 @@
 
       </div>
       <div *ngIf="objetivoModelPage?.totalElements == undefined || objetivoModelPage!.totalElements == 0">
-        <h1 class="text-center">Você ainda não possui nenhum objetivo!</h1>
+        <h1 class="text-center">Você ainda não possui objetivo!</h1>
       </div>
     </div>
   </div>

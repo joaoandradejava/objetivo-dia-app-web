@@ -90,6 +90,7 @@ import { FormsModule } from '@angular/forms';
       useClass: SpinnerInterceptor,
       multi: true
     }
+
   ],
   bootstrap: [AppComponent]
 })

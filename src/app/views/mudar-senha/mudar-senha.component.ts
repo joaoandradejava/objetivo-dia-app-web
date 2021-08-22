@@ -4,13 +4,34 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 import { MensagemService } from 'src/app/services/mensagem.service';
+import { animate, keyframes, query, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-mudar-senha',
   templateUrl: './mudar-senha.component.html',
-  styleUrls: ['./mudar-senha.component.scss']
+  styleUrls: ['./mudar-senha.component.scss'],
+  animations: [
+    trigger('lista-animacao', [
+      transition(':enter', query('*', [
+        animate('600ms 0s ease-in', keyframes([
+          style({ opacity: 0, transform: 'translateX(500px)', offset: 0 }),
+          style({ opacity: 1, transform: 'translateX(0px)', offset: 1 }),
+
+        ]))
+      ])),
+      transition(':leave', query('*', [
+        animate('300ms 0s ease-in', keyframes([
+          style({ opacity: 1, transform: 'translateX(0px)', offset: 0 }),
+          style({ opacity: 0, transform: 'translateX(500px)', offset: 1 }),
+
+        ]))
+      ])),
+    ])
+
+  ]
 })
 export class MudarSenhaComponent implements OnInit {
+  public estado: string = ''
 
   formulario: FormGroup
 

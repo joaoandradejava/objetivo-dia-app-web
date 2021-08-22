@@ -1,18 +1,37 @@
 import { ObjetivoModelPage } from './../../models/objetivo-model-page';
 import { ObjetivoService } from './../../services/objetivo.service';
-import { Objetivo } from './../../models/objetivo';
 import { Component, OnInit } from '@angular/core';
 import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MensagemService } from 'src/app/services/mensagem.service';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
+import { animate, keyframes, query, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-meus-objetivos',
   templateUrl: './meus-objetivos.component.html',
-  styleUrls: ['./meus-objetivos.component.scss']
+  styleUrls: ['./meus-objetivos.component.scss'],
+  animations: [
+    trigger('lista-animacao', [
+      transition(':enter', [query('*', [
+        animate('600ms 0s ease-in', keyframes([
+          style({ opacity: 0, transform: 'translateY(-300px)', offset: 0 }),
+          style({ opacity: .4, transform: 'translateY(-100px)', offset: .6 }),
+          style({ opacity: 1, transform: 'translateY(0px)', offset: 1 })
+        ]))
+      ])]),
+      transition(':leave', query('*', [
+        animate('300ms 0s ease-in-out', keyframes([
+          style({ opacity: 1, offset: 0 }),
+          style({ opacity: 0, offset: 1 }),
+        ]))
+      ]))
+    ])
+  ]
 })
 export class MeusObjetivosComponent implements OnInit {
+
+  public estado: string = ''
 
   objetivoModelPage?: ObjetivoModelPage
   formulario: FormGroup

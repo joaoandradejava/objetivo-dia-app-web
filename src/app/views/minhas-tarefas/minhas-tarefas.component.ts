@@ -8,13 +8,36 @@ import { MensagemService } from 'src/app/services/mensagem.service';
 import { ActivatedRoute } from '@angular/router';
 import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 import { CorProgresso } from 'src/app/utils/cor-progresso';
+import { animate, keyframes, query, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-minhas-tarefas',
   templateUrl: './minhas-tarefas.component.html',
-  styleUrls: ['./minhas-tarefas.component.scss']
+  styleUrls: ['./minhas-tarefas.component.scss'],
+  animations: [
+    trigger('lista-animacao', [
+      transition(':enter', query('*', [
+        animate('500ms 0s ease-in', keyframes([
+          style({ opacity: 0, transform: 'translate(-500px, 0px)', offset: 0 }),
+          style({ opacity: 1, transform: 'translate(0px, 0px)', offset: 1 }),
+
+        ]))
+      ])),
+
+      transition(':leave', query('*', [
+        animate('300ms 0s ease-out', keyframes([
+          style({ opacity: 1, transform: 'translate(0px, 0px)', offset: 0 }),
+          style({ opacity: 0, transform: 'translate(-500px, 0px)', offset: 1 }),
+
+        ]))
+      ]))
+    ]),
+
+  ]
 })
 export class MinhasTarefasComponent implements OnInit {
+
+  public estado: string = ''
 
   tarefas: TarefaModel[] = []
   objetivoModel?: ObjetivoModel
@@ -31,7 +54,7 @@ export class MinhasTarefasComponent implements OnInit {
 
   }
 
-  public corProgresso(): any{
+  public corProgresso(): any {
     return CorProgresso.corProgressoBootstrap(this.objetivoModel!.porcentagem)
   }
 
@@ -54,6 +77,20 @@ export class MinhasTarefasComponent implements OnInit {
     })
   }
 
+  public deletarPorId(id: number): void {
+    this.tarefaService.deletarTarefa(this.objetivoId, id).subscribe(data => {
+      this.mensagemService.mostrarMensagemDeSucesso('Tarefa deletada com sucesso!')
+      this.buscarObjetivo()
+    })
+
+    for (let i = 0; i < this.tarefas.length; i++) {
+      if (this.tarefas[i].id == id) {
+        this.tarefas.splice(i, 1)
+        return
+      }
+    }
+  }
+
   public adicionarTarefa(): void {
     if (this.formGroup.invalid) {
       return
@@ -62,7 +99,8 @@ export class MinhasTarefasComponent implements OnInit {
     this.tarefaService.adicionarTarefa(this.objetivoId, this.formGroup.value).subscribe(data => {
       this.formGroup.reset()
       this.mensagemService.mostrarMensagemDeSucesso('Tarefa adicionada com sucesso!')
-      this.buscarTodasTarefas()
+      this.tarefas.push(data)
+      this.buscarObjetivo()
     })
   }
 

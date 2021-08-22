@@ -1,3 +1,4 @@
+import { transition, trigger, query, animate, keyframes, style } from '@angular/animations';
 import { GraficoObjetivoConcluidoDTO } from './../../models/grafico-objetivo-concluido-dto';
 import { ObjetivoService } from './../../services/objetivo.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -39,9 +40,31 @@ export type ChartOptions = {
 @Component({
   selector: 'app-grafico-objetivos',
   templateUrl: './grafico-objetivos.component.html',
-  styleUrls: ['./grafico-objetivos.component.scss']
+  styleUrls: ['./grafico-objetivos.component.scss'],
+  animations: [
+    trigger('lista-animacao', [
+      transition(':enter', query('*', [
+        animate('0.7s 0s ease-in', keyframes([
+          style({ opacity: 0, offset: 0 }),
+          style({ opacity: 0.4, offset: 0.5 }),
+          style({ opacity: 1, offset: 1 }),
+        ]))
+      ])),
+
+      transition(':leave', query('*', [
+        animate('300ms 0s ease-out', keyframes([
+          style({ opacity: 1, offset: 0 }),
+          style({ opacity: 0.4, offset: 0.5 }),
+          style({ opacity: 0, offset: 1 }),
+        ]))
+      ]))
+    ])
+  ]
 })
 export class GraficoObjetivosComponent implements OnInit {
+
+  public estado: string = ''
+
   @ViewChild("chart") chart?: ChartComponent;
   public chartOptions: Partial<ChartOptions> | any;
   graficoObjetivoConcluidoDto?: GraficoObjetivoConcluidoDTO
