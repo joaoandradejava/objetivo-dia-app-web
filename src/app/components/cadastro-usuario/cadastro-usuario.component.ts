@@ -11,9 +11,8 @@ import { ValidadorFormulario } from 'src/app/utils/validador-formulario';
 })
 export class CadastroUsuarioComponent implements OnInit {
 
-  @Output() realizarLoginEvent: EventEmitter<void> = new EventEmitter<void>();
-
   formulario: FormGroup
+  @Output() fecharModalEvent: EventEmitter<void> = new EventEmitter<void>()
 
   constructor(private usuarioService: UsuarioService, private formBuilder: FormBuilder, private mensagemService: MensagemService) {
     this.formulario = formBuilder.group({
@@ -52,12 +51,11 @@ export class CadastroUsuarioComponent implements OnInit {
     this.usuarioService.salvar(this.formulario.value).subscribe(data => {
       this.formulario.reset()
       this.mensagemService.mostrarMensagemDeSucesso('O seu cadastro foi realizado com sucesso!')
+      this.fecharModalEvent.emit()
     })
 
   }
 
-  public realizarLogin(): void {
-    this.realizarLoginEvent.emit();
-  }
+
 
 }

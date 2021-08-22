@@ -33,6 +33,21 @@ import { animate, keyframes, query, state, style, transition, trigger } from '@a
       ]))
     ]),
 
+    trigger('animacao-card', [
+      transition(':enter', [
+        animate('500ms 0s ease-in', keyframes([
+          style({ opacity: 0, transform: 'translateX(-500px)', offset: 0 }),
+          style({ opacity: 1, transform: 'translateX(0px)', offset: 1 }),
+        ]))
+      ]),
+      transition('* => void', [
+        animate('400ms 0s ease-in', keyframes([
+          style({ opacity: 1, transform: 'translateX(0)', offset: 0 }),
+          style({ opacity: 0, transform: 'translateX(300px)', offset: 1 }),
+        ]))
+      ]),
+    ])
+
   ]
 })
 export class MinhasTarefasComponent implements OnInit {

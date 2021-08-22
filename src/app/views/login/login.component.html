@@ -1,10 +1,16 @@
-<div class="imagem" [@lista-animacao]='estado'>
-  <div class="container">
-    <div class="row justify-content-md-center">
-      <div class="col-md-4">
-        <div class="card-component">
-          <app-realizar-login *ngIf="!isRealizarCadastro" (mudarEvent)="trocar()"></app-realizar-login>
-          <app-cadastro-usuario *ngIf="isRealizarCadastro" (realizarLoginEvent)="trocar()"></app-cadastro-usuario>
+<div>
+  <div>
+    <div class="container espacamento-topo">
+      <div class="row">
+        <div class="col">
+          <div class="conteudo" [@animacao-frase]='estado'>
+            <h1><img src="assets/images/trophy.png" alt=""> Objetivo do Dia App</h1>
+            <p>Conquiste seus objetivos, vença os obstaculos a cada dia. Um passo de cada vez. quem sabe aonde um passo
+              o levará?</p>
+          </div>
+        </div>
+        <div class="col-sm-4" [@card-login]='estado'>
+          <app-realizar-login></app-realizar-login>
         </div>
       </div>
     </div>

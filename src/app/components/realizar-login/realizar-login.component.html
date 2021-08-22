@@ -1,7 +1,3 @@
-<div>
-  <h3 class="text-center">Tela de Login</h3>
-</div>
-
 <div class="card-component">
   <div>
     <form [formGroup]="formularioDeLogin">
@@ -22,13 +18,12 @@
       </div>
       <button type="submit" (click)="realizarLogin()" class="btn btn-primary botao-entrar"
         [disabled]="formularioDeLogin.invalid">Entrar</button>
-      <div>
-        <p class="text-center">É novo aqui? <a class="link-primary link-cursor" (click)="realizarCadastro()">Criar uma
-            conta</a></p>
-      </div>
-      <div class="esqueceu-senha">
-        <p class="text-center" (click)="openModal(esqueceusenha)" style="margin-top: 15px;"><a
+      <div class="esqueceu-senha espacamento">
+        <p class="text-center" (click)="openModal(esqueceusenha)"><a
             class="link-primary link-cursor">Esqueceu a senha?</a></p>
+      </div>
+      <div class="espacamento">
+        <button class="btn btn-success botao" (click)="openModal(cadastro)">Criar nova conta</button>
       </div>
     </form>
   </div>
@@ -52,5 +47,17 @@
     <button class="btn" (click)="modalRef.hide()">Cancelar</button>
     <button class="btn btn-primary" (click)="enviarNovaSenha()" [disabled]="formularioDoEmail.invalid">Enviar nova
       senha</button>
+  </div>
+</ng-template>
+
+<ng-template #cadastro>
+  <div class="modal-header">
+    <h4>Cadastro</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-cadastro-usuario (fecharModalEvent)="fechar()"></app-cadastro-usuario>
   </div>
 </ng-template>

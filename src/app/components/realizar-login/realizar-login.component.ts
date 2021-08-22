@@ -14,7 +14,6 @@ import { MensagemService } from 'src/app/services/mensagem.service';
 })
 export class RealizarLoginComponent implements OnInit {
 
-  @Output() mudarEvent: EventEmitter<void> = new EventEmitter<void>();
   formularioDeLogin: FormGroup
   formularioDoEmail: FormGroup
   modalRef!: BsModalRef;
@@ -31,7 +30,10 @@ export class RealizarLoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
 
+  fechar(): void {
+    this.modalRef.hide()
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
@@ -63,8 +65,6 @@ export class RealizarLoginComponent implements OnInit {
   }
 
 
-  public realizarCadastro(): void {
-    this.mudarEvent.emit();
-  }
+
 
 }

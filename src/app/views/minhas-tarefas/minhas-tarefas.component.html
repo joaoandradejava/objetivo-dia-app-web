@@ -22,9 +22,9 @@
 
   <div class="row">
     <div class="col" *ngIf="tarefas!.length > 0">
-      <div *ngFor="let tarefa of tarefas">
-        <app-card-tarefa  (deletarTarefaEvent)="deletarPorId($event)"
-          (atualizarObjetivoEvent)="buscarObjetivo()" [tarefaModel]="tarefa"></app-card-tarefa>
+      <div [@animacao-card]='estado' *ngFor="let tarefa of tarefas">
+        <app-card-tarefa (deletarTarefaEvent)="deletarPorId($event)" (atualizarObjetivoEvent)="buscarObjetivo()"
+          [tarefaModel]="tarefa"></app-card-tarefa>
       </div>
     </div>
     <div class="col" *ngIf="tarefas!.length <= 0">

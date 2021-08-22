@@ -9,7 +9,7 @@ import { AutenticacaoService } from 'src/app/services/autenticacao.service';
   animations: [
     trigger('lista-animacao', [
       transition(':enter', query('*', [
-        animate('700ms 0s ease-in', keyframes([
+        animate('800ms 0s ease-in', keyframes([
           style({opacity: 0,transform: 'translateX(-300px)', offset:0}),
           style({opacity: 1,transform: 'translateX(0)', offset:1}),
 
