@@ -1,9 +1,10 @@
 .card-anotacao {
   width: 18rem;
-  border: 1px solid rgb(151, 151, 151);
+  border: 1px solid rgb(192, 192, 192);
   padding: 10px 10px;
   margin: 5px 5px;
-  .card-conteudo {
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;  .card-conteudo {
     height: 150px;
     white-space: normal;
     width: 100%;
@@ -16,4 +17,10 @@
     justify-content: space-around;
     align-items: center;
   }
+}
+
+.card-descricao{
+  display: block;
+  font-size: 13px;
+  color: #3e3e3e;
 }
