@@ -1,3 +1,4 @@
+import { AnotacaoCardComponent } from './../../components/anotacao-card/anotacao-card.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -7,7 +8,8 @@ import { MinhasAnotacoesComponent } from './minhas-anotacoes.component';
 
 @NgModule({
   declarations: [
-    MinhasAnotacoesComponent
+    MinhasAnotacoesComponent,
+    AnotacaoCardComponent
   ],
   imports: [
     CommonModule,

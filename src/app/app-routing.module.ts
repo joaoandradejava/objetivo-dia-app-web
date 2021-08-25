@@ -16,7 +16,9 @@ const routes: Routes = [
   { path: 'meus-objetivos/:id/minhas-tarefas', loadChildren: () => import('./views/minhas-tarefas/minhas-tarefas.module').then(m => m.MinhasTarefasModule), canActivate: [AutenticadoGuard] },
   { path: 'grafico-objetivos-concluidos', loadChildren: () => import('./views/grafico-objetivos/grafico-objetivos.module').then(m => m.GraficoObjetivosModule), canActivate: [AutenticadoGuard] },
   { path: 'minhas-anotacoes', loadChildren: () => import('./views/minhas-anotacoes/minhas-anotacoes.module').then(m => m.MinhasAnotacoesModule), canActivate: [AutenticadoGuard] },
-  { path: 'anotacao-input', loadChildren: () => import('./views/anotacao-input/anotacao-input.module').then(m => m.AnotacaoInputModule), canActivate: [AutenticadoGuard] }
+  { path: 'anotacao-input', loadChildren: () => import('./views/anotacao-input/anotacao-input.module').then(m => m.AnotacaoInputModule), canActivate: [AutenticadoGuard] },
+  { path: 'anotacao-input/:id', loadChildren: () => import('./views/anotacao-input/anotacao-input.module').then(m => m.AnotacaoInputModule), canActivate: [AutenticadoGuard] }
+
 ];
 
 @NgModule({

@@ -19,6 +19,7 @@ export class MinhasAnotacoesComponent implements OnInit {
   ngOnInit(): void {
     this.anotacaoService.buscarTodasAnotacoesDoUsuario(this.autenticacaoService.getUsuarioAutenticado().id, this.paginaAtual, this.titulo).subscribe(data => {
       this.anotacaoModelPage = data
+      console.log(data)
     })
   }
 

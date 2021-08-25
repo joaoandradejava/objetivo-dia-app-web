@@ -27,6 +27,7 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { FormsModule } from '@angular/forms';
+import { AnotacaoCardComponent } from './components/anotacao-card/anotacao-card.component';
 
 @NgModule({
   declarations: [

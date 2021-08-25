@@ -1,6 +1,9 @@
 export class Backend {
+  private static servidorHeroku: string = 'https://objetivo-do-dia.herokuapp.com/'
+  private static servidorLocal: string = 'http://localhost:8080/'
+
   private static get servidor(): string {
-    return 'https://objetivo-do-dia.herokuapp.com/'
+    return this.servidorHeroku
   }
 
   public static get login(): string {

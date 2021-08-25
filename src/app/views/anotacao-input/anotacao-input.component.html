@@ -1,13 +1,28 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <a [routerLink]="['/minhas-anotacoes']" class="link-primary" >Voltar</a>
+      <a [routerLink]="['/minhas-anotacoes']" class="link-primary">Voltar</a>
     </div>
   </div>
   <div class="row">
     <div class="col">
       <h2 class="text-center">Minha Anotação</h2>
 
+      <form [formGroup]="formulario">
+        <div class="form-group espacamento">
+          <label for="titulo">Titulo</label>
+          <input type="text" formControlName="titulo" id="titulo" class="form-control">
+        </div>
+        <div class="form-group espacamento">
+          <ckeditor [editor]="Editor" formControlName="conteudo" [config]="config"></ckeditor>
+        </div>
+
+        <div>
+          <button class="btn btn-danger" (click)="cancelar()">Cancelar</button>
+          <button class="btn btn-primary espacamento-esquerda" [disabled]="formulario.invalid"
+            (click)="salvar()">{{textoButtonSalvar}}</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
