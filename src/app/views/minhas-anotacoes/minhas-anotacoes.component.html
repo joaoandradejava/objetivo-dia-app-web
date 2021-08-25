@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <button [routerLink]="['/anotacao-input']" routerLinkActive="router-link-active"  class="btn btn-success">Criar nova anotação</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div *ngIf="anotacaoModelPage?.content">
+      <div class="col">
+        <h2 class="text-center">Você não possui anotações!</h2>
+      </div>
+    </div>
+  </div>
+</div>
