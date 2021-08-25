@@ -1,7 +1,7 @@
 export interface AnotacaoModel{
   id: number
   titulo: string
-  conteudoResumido: string
+  conteudoResumo: string
   dataCriacao: string
   dataModificacao: string
 }

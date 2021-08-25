@@ -17,6 +17,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     ReactiveFormsModule,
     CKEditorModule,
 
+
   ]
 })
 export class AnotacaoInputModule { }

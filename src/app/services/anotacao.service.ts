@@ -12,7 +12,7 @@ export class AnotacaoService {
   constructor(private http: HttpClient) { }
 
   public buscarTodasAnotacoesDoUsuario(usuarioId: number, pagina: number, titulo: string): Observable<any> {
-    return this.http.get(Backend.anotacoes(usuarioId) + `?page=${pagina}&titulo=${titulo}`)
+    return this.http.get(Backend.anotacoes(usuarioId) + `?page=${pagina}&titulo=${titulo}&size=6`)
   }
 
   public salvar(usuarioId: number, anotacaoInput: AnotacaoInput): Observable<any> {
@@ -25,5 +25,9 @@ export class AnotacaoService {
 
   public atualizar(usuarioId: number, anotacaoId: number, anotacaoInput: AnotacaoInput): Observable<any> {
     return this.http.put(Backend.anotacoes(usuarioId) + `/${anotacaoId}`, anotacaoInput)
+  }
+
+  public deletarPorId(usuarioId: number, anotacaoId: number): Observable<any> {
+    return this.http.delete(Backend.anotacoes(usuarioId) + `/${anotacaoId}`)
   }
 }

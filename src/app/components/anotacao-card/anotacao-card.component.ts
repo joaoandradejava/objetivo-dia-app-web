@@ -1,5 +1,5 @@
 import { AnotacaoModel } from './../../models/anotacao-model';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-anotacao-card',
@@ -9,10 +9,14 @@ import { Component, Input, OnInit } from '@angular/core';
 export class AnotacaoCardComponent implements OnInit {
 
   @Input() anotacaoModel?: AnotacaoModel
+  @Output() deletarAnotacaoEvent: EventEmitter<number> = new EventEmitter<number>()
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  public deletar(): void {
+    this.deletarAnotacaoEvent.emit(this.anotacaoModel?.id)
+  }
 }

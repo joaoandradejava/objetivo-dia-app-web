@@ -25,14 +25,20 @@ export class AnotacaoInputComponent implements OnInit {
         'numberedList',
         '|',
         'outdent',
+        'alignment',
         'indent',
         '|',
-        'imageUpload',
         'blockQuote',
         'insertTable',
         'mediaEmbed',
         'undo',
-        'redo'
+        'redo',
+        'fontSize',
+        'fontBackgroundColor',
+        'fontColor',
+        'fontFamily',
+        'imageUpload',
+        'imageInsert'
       ]
     },
     language: 'pt-br',
@@ -52,7 +58,8 @@ export class AnotacaoInputComponent implements OnInit {
         'mergeTableCells'
       ]
     },
-    licenseKey: '',
+      licenseKey: '',
+
 
   }
 
@@ -99,10 +106,6 @@ export class AnotacaoInputComponent implements OnInit {
         this.mensagemService.mostrarMensagemDeSucesso('Anotação atualizada com sucesso')
       })
     }
-  }
-
-  public cancelar(): void {
-    this.formulario.reset()
   }
 
 

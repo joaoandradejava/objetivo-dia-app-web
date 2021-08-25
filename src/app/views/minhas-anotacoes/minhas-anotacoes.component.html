@@ -1,19 +1,40 @@
 <div class="container">
-  <div class="row">
+  <div class="row espacamento">
     <div class="col">
-      <button [routerLink]="['/anotacao-input']" routerLinkActive="router-link-active" class="btn btn-success">Criar
-        nova anotação</button>
+      <button [routerLink]="['/anotacao-input']" routerLinkActive="router-link-active" class="btn btn-success">
+        <i-bs name="plus-circle" width="20" height="20">
+        </i-bs> Criar
+        nova anotação
+      </button>
+    </div>
+
+    <div class="col-md-3" *ngIf="isTemAnotacao()">
+      <div class="form-group">
+        <form [formGroup]="formGroup">
+          <input type="text" formControlName="titulo" placeholder="Pesquisar pelo titulo" class="form-control">
+        </form>
+      </div>
     </div>
   </div>
 
   <div class="row">
-    <div *ngIf="anotacaoModelPage?.content != undefined">
+    <div *ngIf="!isTemAnotacao()">
       <div class="col">
-        <h2 class="text-center">Você não possui anotações!</h2>
-        <div *ngFor="let anotacao of anotacaoModelPage?.content">
-          <app-anotacao-card [anotacaoModel]="anotacao"></app-anotacao-card>
+        <h1 class="text-center">Você não possui anotações</h1>
+      </div>
+    </div>
+    <div *ngIf="isTemAnotacao()">
+      <div class="col">
+        <h2 class="text-center">Minhas anotações</h2>
+        <div class="card-container">
+          <app-anotacao-card (deletarAnotacaoEvent)="deletarPorId($event)"
+            *ngFor="let anotacao of anotacaoModelPage?.content" [anotacaoModel]="anotacao"></app-anotacao-card>
         </div>
       </div>
+      <pagination [boundaryLinks]="true" [itemsPerPage]="anotacaoModelPage!.size"
+        [totalItems]="anotacaoModelPage!.totalElements" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+        lastText="&raquo;" (pageChanged)="pageChanged($event)">
+      </pagination>
     </div>
   </div>
 </div>

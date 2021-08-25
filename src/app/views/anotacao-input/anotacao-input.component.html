@@ -11,15 +11,15 @@
       <form [formGroup]="formulario">
         <div class="form-group espacamento">
           <label for="titulo">Titulo</label>
-          <input type="text" formControlName="titulo" id="titulo" class="form-control">
+          <input type="text" placeholder="Informe o titulo" formControlName="titulo" id="titulo" class="form-control">
         </div>
         <div class="form-group espacamento">
-          <ckeditor [editor]="Editor" formControlName="conteudo" [config]="config"></ckeditor>
+          <label for="conteudo">Conteudo</label>
+          <ckeditor [editor]="Editor" id="conteudo" formControlName="conteudo" [config]="config"></ckeditor>
         </div>
 
         <div>
-          <button class="btn btn-danger" (click)="cancelar()">Cancelar</button>
-          <button class="btn btn-primary espacamento-esquerda" [disabled]="formulario.invalid"
+          <button class="btn btn-primary" [disabled]="formulario.invalid"
             (click)="salvar()">{{textoButtonSalvar}}</button>
         </div>
       </form>

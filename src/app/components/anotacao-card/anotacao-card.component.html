@@ -1,13 +1,24 @@
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">{{anotacaoModel?.titulo}}</h5>
-    <p class="card-text">{{anotacaoModel?.conteudoResumido}}</p>
+<div class="card-anotacao" style="width: 18rem;">
+  <div>
+    <h5 class="card-title text-center">{{anotacaoModel?.titulo}}</h5>
+    <hr>
+  </div>
+  <div [innerHtml]="anotacaoModel?.conteudoResumo" class="card-conteudo">
+  </div>
+  <div>
     <hr>
     <h6>Data criação: {{anotacaoModel?.dataCriacao |date}}</h6>
     <h6>Data Modificação: {{anotacaoModel?.dataModificacao |date}}</h6>
     <hr>
-    <button class="btn btn-primary" [routerLink]="['/anotacao-input/', anotacaoModel?.id]"
-   >Editar</button>
-    <button class="btn btn-danger">Deletar</button>
+  </div>
+  <div class="botoes">
+    <button class="btn" [routerLink]="['/anotacao-input/', anotacaoModel?.id]">
+      <i-bs name="pencil-fill" style="color: rgb(8, 0, 116);" width="30" height="30">
+      </i-bs>
+    </button>
+    <button class="btn" (click)="deletar()">
+      <i-bs name="trash-fill" style="color: rgb(255, 47, 47);" width="30" height="30">
+      </i-bs>
+    </button>
   </div>
 </div>
