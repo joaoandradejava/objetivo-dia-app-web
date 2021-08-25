@@ -1,3 +1,4 @@
+import { trigger, transition, query, animate, keyframes, style } from '@angular/animations';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 import { AnotacaoService } from './../../services/anotacao.service';
@@ -9,9 +10,27 @@ import * as Editor from 'src/app/ckeditor5/build/ckeditor.js';
 @Component({
   selector: 'app-anotacao-input',
   templateUrl: './anotacao-input.component.html',
-  styleUrls: ['./anotacao-input.component.scss']
+  styleUrls: ['./anotacao-input.component.scss'],
+  animations: [
+    trigger('lista-animacao', [
+      transition(':enter', query('*', [
+        animate('600ms 0s ease-in', keyframes([
+          style({ opacity: 0, transform: 'translateX(-300px)', offset: 0 }),
+          style({ opacity: 1, transform: 'translateX(0px)', offset: 1 }),
+        ]))
+      ])),
+      transition(':leave', query('*', [
+        animate('300ms 0s ease-out', keyframes([
+          style({ opacity: 1, transform: 'translateX(0px)', offset: 0 }),
+          style({ opacity: 0, transform: 'translateX(300px)', offset: 1 }),
+        ]))
+      ]))
+    ])
+  ]
 })
 export class AnotacaoInputComponent implements OnInit {
+  public estado: string = ''
+
   public Editor = Editor;
   public config = {
     toolbar: {
@@ -58,7 +77,7 @@ export class AnotacaoInputComponent implements OnInit {
         'mergeTableCells'
       ]
     },
-      licenseKey: '',
+    licenseKey: '',
 
 
   }
@@ -80,7 +99,7 @@ export class AnotacaoInputComponent implements OnInit {
       this.id = data.id
     })
 
-    if(this.isEditar()){
+    if (this.isEditar()) {
       this.anotacaoService.buscarPorId(this.autenticacaoService.getUsuarioAutenticado().id, this.id).subscribe(data => {
         this.formulario.get('titulo')?.setValue(data.titulo)
         this.formulario.get('conteudo')?.setValue(data.conteudo)
@@ -88,7 +107,7 @@ export class AnotacaoInputComponent implements OnInit {
       })
     }
 
-    this.textoButtonSalvar = this.isEditar()? 'Editar': 'Salvar'
+    this.textoButtonSalvar = this.isEditar() ? 'Editar' : 'Salvar'
   }
 
   public salvar(): void {
@@ -96,12 +115,12 @@ export class AnotacaoInputComponent implements OnInit {
       return;
     }
 
-    if(!this.isEditar()){
+    if (!this.isEditar()) {
       this.anotacaoService.salvar(this.autenticacaoService.getUsuarioAutenticado().id, this.formulario.value).subscribe(data => {
         this.mensagemService.mostrarMensagemDeSucesso('Anotação Salva com sucesso')
-        this.router.navigate(['/anotacao-input/' +data.id])
+        this.router.navigate(['/anotacao-input/' + data.id])
       })
-    }else{
+    } else {
       this.anotacaoService.atualizar(this.autenticacaoService.getUsuarioAutenticado().id, this.id, this.formulario.value).subscribe(data => {
         this.mensagemService.mostrarMensagemDeSucesso('Anotação atualizada com sucesso')
       })

@@ -1,3 +1,4 @@
+import { trigger, transition, query, animate, keyframes, style } from '@angular/animations';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { MensagemService } from './../../services/mensagem.service';
@@ -10,9 +11,27 @@ import { debounceTime } from 'rxjs/operators';
 @Component({
   selector: 'app-minhas-anotacoes',
   templateUrl: './minhas-anotacoes.component.html',
-  styleUrls: ['./minhas-anotacoes.component.scss']
+  styleUrls: ['./minhas-anotacoes.component.scss'],
+  animations: [
+    trigger('lista-animacao', [
+      transition(':enter', query('*', [
+        animate('600ms 0s ease-in', keyframes([
+          style({ opacity: 0, offset: 0 }),
+          style({ opacity: 1, offset: 1 }),
+        ]))
+      ])),
+
+      transition(':leave', query('*', [
+        animate('300ms 0s ease-out', keyframes([
+          style({ opacity: 1, offset: 0 }),
+          style({ opacity: 0, offset: 1 }),
+        ]))
+      ]))
+    ])
+  ]
 })
 export class MinhasAnotacoesComponent implements OnInit {
+  public estado: string = ''
 
   anotacaoModelPage?: AnotacaoModelPage
   paginaAtual: number = 0
@@ -24,9 +43,9 @@ export class MinhasAnotacoesComponent implements OnInit {
     })
 
     this.formGroup.get('titulo')?.valueChanges.pipe(debounceTime(1000)).subscribe(data => {
-     this.buscarTodos()
+      this.buscarTodos()
     })
-   }
+  }
 
   ngOnInit(): void {
     this.buscarTodos()
@@ -35,25 +54,23 @@ export class MinhasAnotacoesComponent implements OnInit {
   buscarTodos(): void {
     this.anotacaoService.buscarTodasAnotacoesDoUsuario(this.autenticacaoService.getUsuarioAutenticado().id, this.paginaAtual, this.getTitulo()).subscribe(data => {
       this.anotacaoModelPage = data
-      console.log(data)
     })
   }
 
-  getTitulo(): string{
+  getTitulo(): string {
     return this.formGroup.get('titulo')?.value
   }
 
   public deletarPorId(anotacaoId: number): void {
-    if (confirm('Tem certeza que deseja deletar essa anotação?')) {
-      this.anotacaoService.deletarPorId(this.autenticacaoService.getUsuarioAutenticado().id, anotacaoId).subscribe(data => {
-        this.mensagemService.mostrarMensagemDeSucesso('Anotação deletada com sucesso!')
-        this.buscarTodos()
-        this.paginaAtual = 0
-      })
-    }
+    this.anotacaoService.deletarPorId(this.autenticacaoService.getUsuarioAutenticado().id, anotacaoId).subscribe(data => {
+      this.mensagemService.mostrarMensagemDeSucesso('Anotação deletada com sucesso!')
+      this.buscarTodos()
+      this.paginaAtual = 0
+    })
+
   }
 
-  public isTemAnotacao(): boolean{
+  public isTemAnotacao(): boolean {
     return this.anotacaoModelPage?.content != undefined && this.anotacaoModelPage!.totalElements > 0
   }
 

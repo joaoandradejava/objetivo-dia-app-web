@@ -16,9 +16,17 @@
       <i-bs name="pencil-fill" style="color: rgb(8, 0, 116);" width="30" height="30">
       </i-bs>
     </button>
-    <button class="btn" (click)="deletar()">
+    <button class="btn" (click)="openModal(confirmTemplate)">
       <i-bs name="trash-fill" style="color: rgb(255, 47, 47);" width="30" height="30">
       </i-bs>
     </button>
   </div>
 </div>
+
+<ng-template #confirmTemplate>
+  <div class="modal-body text-center">
+    <p>Deseja realmente deletar esta Anotação?</p>
+    <button type="button" class="btn btn-default" (click)="deletar()">Yes</button>
+    <button type="button" class="btn btn-primary" (click)="modalRef?.hide()">No</button>
+  </div>
+</ng-template>

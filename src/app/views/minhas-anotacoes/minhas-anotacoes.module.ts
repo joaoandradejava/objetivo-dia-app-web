@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { MinhasAnotacoesRoutingModule } from './minhas-anotacoes-routing.module';
 import { MinhasAnotacoesComponent } from './minhas-anotacoes.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     MinhasAnotacoesRoutingModule,
     NgxBootstrapIconsModule.pick(allIcons),
     PaginationModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule.forRoot()
   ]
 })
 export class MinhasAnotacoesModule { }
