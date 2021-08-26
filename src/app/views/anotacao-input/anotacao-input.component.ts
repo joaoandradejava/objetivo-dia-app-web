@@ -7,6 +7,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import * as Editor from 'src/app/ckeditor5/build/ckeditor.js';
 
+//@ts-ignore
+import * as html2pdf from 'html2pdf.js'
+
 @Component({
   selector: 'app-anotacao-input',
   templateUrl: './anotacao-input.component.html',
@@ -110,6 +113,22 @@ export class AnotacaoInputComponent implements OnInit {
     this.textoButtonSalvar = this.isEditar() ? 'Editar' : 'Salvar'
   }
 
+  public exportarParaPdf(): void {
+    if (this.formulario.invalid || !this.isEditar()) {
+      return;
+    }
+
+    let option = {
+      margin: 1,
+      filename: this.formulario.get('titulo')?.value,
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+
+    html2pdf().from(this.formulario.get('conteudo')?.value).set(option).save();
+  }
+
   public salvar(): void {
     if (this.formulario.invalid) {
       return;
@@ -128,7 +147,7 @@ export class AnotacaoInputComponent implements OnInit {
   }
 
 
-  private isEditar(): boolean {
+  public isEditar(): boolean {
     return this.id > 0 ? true : false
   }
 
