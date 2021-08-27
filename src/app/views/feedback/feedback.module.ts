@@ -1,3 +1,4 @@
+import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,7 +14,9 @@ import { FeedbackComponent } from './feedback.component';
   imports: [
     CommonModule,
     FeedbackRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxBootstrapIconsModule.pick(allIcons),
+
   ]
 })
 export class FeedbackModule { }
