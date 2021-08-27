@@ -45,6 +45,7 @@ export class AnotacaoInputComponent implements OnInit {
         'link',
         'bulletedList',
         'numberedList',
+        'todoList',
         '|',
         'outdent',
         'alignment',
@@ -56,11 +57,11 @@ export class AnotacaoInputComponent implements OnInit {
         'undo',
         'redo',
         'fontSize',
-        'fontBackgroundColor',
-        'fontColor',
         'fontFamily',
-        'imageUpload',
-        'imageInsert'
+        'fontColor',
+        'fontBackgroundColor',
+        'horizontalLine',
+        'underline'
       ]
     },
     language: 'pt-br',
@@ -69,20 +70,19 @@ export class AnotacaoInputComponent implements OnInit {
         'imageTextAlternative',
         'imageStyle:inline',
         'imageStyle:block',
-        'imageStyle:side',
-        'linkImage'
+        'imageStyle:side'
       ]
     },
     table: {
       contentToolbar: [
         'tableColumn',
         'tableRow',
-        'mergeTableCells'
+        'mergeTableCells',
+        'tableCellProperties',
+        'tableProperties'
       ]
     },
-    licenseKey: '',
-
-
+      licenseKey: '',
   }
 
   formulario: FormGroup
