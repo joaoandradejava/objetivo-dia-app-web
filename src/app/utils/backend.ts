@@ -25,5 +25,8 @@ export class Backend {
     return this.servidor + `usuarios/${usuarioId}/anotacoes`
   }
 
+  public static feedbackDoUsuario(usuarioId: number): string {
+    return this.servidor + `usuarios/${usuarioId}/feedbacks`
+  }
 
 }

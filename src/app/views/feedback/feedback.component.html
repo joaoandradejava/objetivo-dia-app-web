@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center">Feedback</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p class="text-center">O seu feedback é de extrema importancia pra nóis, com ele podemos melhorar o nosso sistema,
+        adicionar coisas
+        novas e corrigir possiveis bugs que o sistema possa ter.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <form [formGroup]="formulario">
+        <textarea type="text" formControlName="feedback"
+          placeholder="Digite seu feedback. Exemplo: Algo que podemos adicionar no sistema, algum possivel bug, ou sua opinião sobre o sistema. A sua opinião é sempre muito bem vinda e de extrema importancia para nois :)"
+          class="form-control"> </textarea>
+        <button class="btn btn-success botao" (click)="enviarFeedback()" [disabled]="formulario.invalid">Enviar
+          Feedback</button>
+      </form>
+    </div>
+  </div>
+</div>
