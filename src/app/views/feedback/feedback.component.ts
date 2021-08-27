@@ -1,3 +1,4 @@
+import { trigger, transition, query, animate, keyframes, style } from '@angular/animations';
 import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 import { MensagemService } from 'src/app/services/mensagem.service';
 import { FeedbackService } from './../../services/feedback.service';
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-feedback',
   templateUrl: './feedback.component.html',
-  styleUrls: ['./feedback.component.scss']
+  styleUrls: ['./feedback.component.scss'],
+  animations: [
+    trigger('lista-animacao', [
+      transition(':enter', query('*', [
+        animate('500ms 0s ease-in', keyframes([
+          style({ opacity: 0, offset: 0 }),
+          style({ opacity: 1, offset: 1 }),
+
+        ]))
+      ])),
+      transition(':leave', query('*', [
+        animate('300ms 0s ease-out', keyframes([
+          style({ opacity: 1, offset: 0 }),
+          style({ opacity: 0, offset: 1 }),
+        ]))
+      ]))
+    ])
+  ]
 })
 export class FeedbackComponent implements OnInit {
+  public estado: string = ''
 
   formulario: FormGroup
 

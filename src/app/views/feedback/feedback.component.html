@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" [@lista-animacao]="estado">
   <div class="row">
     <div class="col">
       <h1 class="text-center">Feedback</h1>
@@ -14,7 +14,7 @@
   <div class="row">
     <div class="col">
       <form [formGroup]="formulario">
-        <textarea type="text" formControlName="feedback"
+        <textarea rows="5" type="text" formControlName="feedback"
           placeholder="Digite seu feedback. Exemplo: Algo que podemos adicionar no sistema, algum possivel bug, ou sua opinião sobre o sistema. A sua opinião é sempre muito bem vinda e de extrema importancia para nois :)"
           class="form-control"> </textarea>
         <button class="btn btn-success botao" (click)="enviarFeedback()" [disabled]="formulario.invalid">Enviar
