@@ -120,11 +120,16 @@ export class AnotacaoInputComponent implements OnInit {
 
     let option = {
       margin: 1,
-      filename: this.formulario.get('titulo')?.value,
+      filename: this.formulario.get('titulo')?.value + '.pdf',
       image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+      html2canvas: {
+        dpi: 300,
+        scale: 2,
+        useCORS: true, letterRendering: true
+      },
+      jsPDF: { unit: 'pt', format: 'a4', orientation: 'portrait' }
     };
+
 
     html2pdf().from(this.formulario.get('conteudo')?.value).set(option).save();
   }
