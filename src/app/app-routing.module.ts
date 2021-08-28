@@ -1,3 +1,4 @@
+import { AdministradorGuard } from './guards/administrador.guard';
 import { DeletarContaComponent } from './views/deletar-conta/deletar-conta.component';
 import { AutenticadoGuard } from './guards/autenticado.guard';
 import { NaoAutenticadoGuard } from './guards/nao-autenticado.guard';
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'minhas-anotacoes', loadChildren: () => import('./views/minhas-anotacoes/minhas-anotacoes.module').then(m => m.MinhasAnotacoesModule), canActivate: [AutenticadoGuard] },
   { path: 'anotacao-input', loadChildren: () => import('./views/anotacao-input/anotacao-input.module').then(m => m.AnotacaoInputModule), canActivate: [AutenticadoGuard] },
   { path: 'anotacao-input/:id', loadChildren: () => import('./views/anotacao-input/anotacao-input.module').then(m => m.AnotacaoInputModule), canActivate: [AutenticadoGuard] },
-  { path: 'feedback', loadChildren: () => import('./views/feedback/feedback.module').then(m => m.FeedbackModule), canActivate: [AutenticadoGuard] }
+  { path: 'feedback', loadChildren: () => import('./views/feedback/feedback.module').then(m => m.FeedbackModule), canActivate: [AutenticadoGuard] },
+  { path: 'categorias', loadChildren: () => import('./views/categorias/categorias.module').then(m => m.CategoriasModule), canActivate: [AutenticadoGuard, AdministradorGuard] }
 
 ];
 

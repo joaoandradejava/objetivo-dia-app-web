@@ -1,0 +1,47 @@
+<div class="container" [@lista-animacao]='estado'>
+  <div class="row espacamento-baixo">
+    <h1 class="text-center">Categorias</h1>
+    <div class="col">
+      <button class="btn btn-success" [routerLink]="['categoria-input']">Nova categoria</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center">Código</th>
+            <th scope="col">Avatar</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Código da cor</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Deletar</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let categoria of categorias">
+            <th class="text-center" scope="row">{{categoria.id}}</th>
+            <td><img width="30" [src]="categoria.avatarUrl" alt=""></td>
+            <td>{{categoria.nome}}</td>
+            <td>
+              <div class="codigo-cor" [ngStyle]="{'background-color': categoria.codigoCor}"></div>
+              {{categoria.codigoCor}}
+            </td>
+            <td><button class="btn btn-primary" [routerLink]="['categoria-input', categoria.id]">Editar</button></td>
+            <td><button class="btn btn-danger" (click)="openModal(confirmTemplate, categoria.id)">Deletar</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #confirmTemplate>
+  <div class="modal-body text-center">
+    <p>Deseja realmente deletar esta categoria?</p>
+    <button type="button" class="btn btn-default" (click)="deletarPorId()">Yes</button>
+    <button type="button" class="btn btn-primary" (click)="modalRef?.hide()">No</button>
+  </div>
+</ng-template>

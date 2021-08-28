@@ -5,4 +5,6 @@ export interface ObjetivoModel{
   data: string
   porcentagem: number
   categoria: CategoriaModel
+  totalTarefas: number
+  totalTarefasConcluidas: number
 }

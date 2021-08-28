@@ -1,12 +1,16 @@
-<div class="card-objetivo" [ngClass]="{'objetivo-concluido': objetivoModel?.porcentagem == 100}">
+<div class="card-objetivo"
+  [ngStyle]="{'background-color': objetivoModel?.porcentagem == 100? objetivoModel?.categoria?.codigoCor: ''}"
+  [ngClass]="{'objetivo-concluido': objetivoModel?.porcentagem == 100}">
   <div [routerLink]="['/meus-objetivos/' + objetivoModel?.id + '/minhas-tarefas']" class="area-clicavel item-chart">
-    <circle-progress [percent]=objetivoModel!.porcentagem [radius]="45" [outerStrokeWidth]="5" [innerStrokeWidth]="5"
+    <circle-progress [showImage]=true [imageWidth]=50 [imageHeight]=50 [imageSrc]="objetivoModel?.categoria!.avatarUrl"
+      [percent]=objetivoModel!.porcentagem [radius]="45" [outerStrokeWidth]="5" [innerStrokeWidth]="5"
       [outerStrokeColor]="corProgresso()" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="1000">
     </circle-progress>
   </div>
   <div [routerLink]="['/meus-objetivos/' + objetivoModel?.id + '/minhas-tarefas']" class="item">
-    <h5 class="text-center">{{objetivoModel?.titulo}}</h5>
-    <p class="info">Data de Inicio: {{objetivoModel?.data | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
+    <h4 class="text-center">{{objetivoModel?.titulo}}</h4>
+    <h6>Tarefas: {{objetivoModel?.totalTarefasConcluidas}}/{{objetivoModel?.totalTarefas}}</h6>
+    <p>Data de Inicio: {{objetivoModel?.data | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
   </div>
   <div>
     <button type="button" class="btn btn-primary botao" (click)="openModal(editarTemplate)">
@@ -43,8 +47,8 @@
 
       <div class="form-group" formGroupName="categoria">
         <span>Categoria</span>
-        <select class="form-control" formControlName="id"  id="exampleFormControlSelect1">
-          <option *ngFor="let categoria of categorias"  [value]="categoria.id" [label]="categoria.nome"></option>
+        <select class="form-control" formControlName="id" id="exampleFormControlSelect1">
+          <option *ngFor="let categoria of categorias" [value]="categoria.id" [label]="categoria.nome"></option>
         </select>
       </div>
     </form>

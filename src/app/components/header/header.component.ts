@@ -38,6 +38,10 @@ export class HeaderComponent implements OnInit {
     this.autenticacaoService.sair()
   }
 
+  public isAdmin(): boolean{
+    return this.autenticacaoService.getUsuarioAutenticado().isAdmin
+  }
+
   public nomeUsuarioLogado(): string {
     return this.autenticacaoService.getUsuarioAutenticado().nome
   }

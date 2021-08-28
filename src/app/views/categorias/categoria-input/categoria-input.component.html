@@ -1,0 +1,33 @@
+<div class="container" [@lista-animacao]='estado'>
+  <div class="row espacamento-baixo">
+    <div class="col">
+      <a [routerLink]="['/categorias']" class="link-primary">Voltar</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center espacamento-baixo">Categoria</h1>
+      <form [formGroup]="formulario">
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" formControlName="nome" placeholder="Informe o nome" class="form-control" id="nome">
+        </div>
+        <div class="form-group">
+          <label for="codigo-cor">Código da Cor</label>
+          <input type="text" formControlName="codigoCor" placeholder="#f3f3f3" class="form-control" id="codigo-cor">
+        </div>
+        <div class="form-group">
+          <label for="avatar-url">Avatar Url</label>
+          <input type="text" formControlName="avatarUrl"
+            placeholder="https://image.flaticon.com/icons/png/512/639/639365.png" class="form-control" id="avatar-url">
+        </div>
+
+        <div class="botoes">
+          <button (click)="cancelar()" class="btn btn-danger">Cancelar</button>
+          <button (click)="salvar()" [disabled]="formulario.invalid"
+            class="btn btn-success espacamento-esquerda">{{textoBotaoSalvar}}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
