@@ -1,3 +1,5 @@
+import { CategoriaModel } from './../../models/categoria-model';
+import { CategoriaService } from './../../services/categoria.service';
 import { ObjetivoModelPage } from './../../models/objetivo-model-page';
 import { ObjetivoService } from './../../services/objetivo.service';
 import { Component, OnInit } from '@angular/core';
@@ -33,20 +35,29 @@ export class MeusObjetivosComponent implements OnInit {
 
   public estado: string = ''
 
+  categorias: CategoriaModel[] = []
+
   objetivoModelPage?: ObjetivoModelPage
   formulario: FormGroup
   paginaAtual: any = 0
   tamanhoDaPagina: number = 5
 
-  constructor(private objetivoService: ObjetivoService, private autenticacaoService: AutenticacaoService, private formBuilder: FormBuilder, private mensagemService: MensagemService) {
+  constructor(private objetivoService: ObjetivoService, private autenticacaoService: AutenticacaoService, private formBuilder: FormBuilder, private mensagemService: MensagemService, private categoriaService: CategoriaService) {
     this.formulario = formBuilder.group({
-      "titulo": ['', [Validators.required, Validators.maxLength(255)]]
+      "titulo": ['', [Validators.required, Validators.maxLength(255)]],
+      "categoria": formBuilder.group({
+        "id": ['', [Validators.required]]
+      })
     })
   }
 
 
 
   ngOnInit(): void {
+    this.categoriaService.buscarTodos().subscribe(data => {
+      this.categorias = data
+    })
+
     this.buscarTodos()
   }
 

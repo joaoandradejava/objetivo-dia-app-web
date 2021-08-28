@@ -1,3 +1,4 @@
+import { CategoriaModel } from './../../models/categoria-model';
 import { ObjetivoService } from './../../services/objetivo.service';
 import { ObjetivoModel } from './../../models/objetivo-model';
 import { Component, Input, OnInit, EventEmitter, Output, TemplateRef } from '@angular/core';
@@ -15,13 +16,17 @@ import { CorProgresso } from 'src/app/utils/cor-progresso';
 export class CardObjetivoItemComponent implements OnInit {
 
   @Input() objetivoModel?: ObjetivoModel
+  @Input() categorias: CategoriaModel[] = []
   @Output() buscarTodosEmitter: EventEmitter<void> = new EventEmitter<void>()
   formularioEditar: FormGroup
   modalRef?: BsModalRef;
 
   constructor(private formBuilder: FormBuilder, private autenticacaoService: AutenticacaoService, private objetivoService: ObjetivoService, private mensagemService: MensagemService, private modalService: BsModalService) {
     this.formularioEditar = formBuilder.group({
-      "titulo": ['', [Validators.required, Validators.maxLength(255)]]
+      "titulo": ['', [Validators.required, Validators.maxLength(255)]],
+      "categoria": formBuilder.group({
+        "id": ['', Validators.required]
+      })
     })
   }
 
@@ -35,7 +40,8 @@ export class CardObjetivoItemComponent implements OnInit {
 
   public buscar(): void {
     this.formularioEditar.get('titulo')?.setValue(this.objetivoModel?.titulo)
-  }
+    this.formularioEditar.get('categoria')?.get('id')?.setValue(this.objetivoModel?.categoria.id)
+   }
 
   corProgresso(): string {
     return CorProgresso.corProgresso(this.objetivoModel!.porcentagem)

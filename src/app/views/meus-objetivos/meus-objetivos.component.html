@@ -14,7 +14,8 @@
     <div class="col-md-12">
       <div *ngIf="objetivoModelPage?.totalElements != undefined && objetivoModelPage!.totalElements > 0">
         <div *ngFor="let objetivo of objetivoModelPage?.content">
-          <app-card-objetivo-item [objetivoModel]="objetivo" (buscarTodosEmitter)="buscarTodos()">
+          <app-card-objetivo-item [categorias]="categorias" [objetivoModel]="objetivo"
+            (buscarTodosEmitter)="buscarTodos()">
           </app-card-objetivo-item>
         </div>
         <pagination [(ngModel)]="paginaAtual" previousText="&lsaquo;" nextText="&rsaquo;" [boundaryLinks]="true"
@@ -45,7 +46,12 @@
             <span>Titulo</span>
             <input type="text" placeholder="Informe o titulo" formControlName="titulo" class="form-control">
           </div>
-
+          <div class="form-group" formGroupName="categoria">
+            <span>Categoria</span>
+            <select class="form-control" formControlName="id" id="exampleFormControlSelect1">
+              <option  *ngFor="let categoria of categorias" [value]="categoria.id" >{{categoria.nome}}</option>
+            </select>
+          </div>
         </form>
 
       </div>
