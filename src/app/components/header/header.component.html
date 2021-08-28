@@ -43,6 +43,12 @@
               <i-bs name="grid" width="20" height="20">
               </i-bs>
             </a></li>
+
+          <li role="menuitem" *ngIf="isAdmin()"><a class="dropdown-item" [routerLink]="['/usuarios']"
+              routerLinkActive="router-link-active">Usuarios do Sistema
+              <i-bs name="person-fill" width="20" height="20">
+              </i-bs>
+            </a></li>
           <li role="menuitem"><a class="dropdown-item" [routerLink]="['/deletar-conta']"
               routerLinkActive="router-link-active">Deletar Conta <i-bs name="trash" width="20" height="20">
               </i-bs></a></li>

@@ -42,4 +42,16 @@ export class UsuarioService {
   public esqueceuSenha(esqueceuSenhaInput: EsqueceuSenhaInput): Observable<any> {
     return this.http.put(Backend.usuarios + '/esqueci-senha', esqueceuSenhaInput)
   }
+
+  public buscarTodos(pagina: number, tamanho: number, email: string, nome: string): Observable<any> {
+    return this.http.get(Backend.usuarios + `?size=${tamanho}&page=${pagina}&email=${email}&nome=${nome}`)
+  }
+
+  public darPermissaoDeAdministrado(id: number): Observable<any> {
+    return this.http.put(Backend.usuarios + `/${id}/admin`, null)
+  }
+
+  public tirarPermissaoDeAdministrado(id: number): Observable<any> {
+    return this.http.delete(Backend.usuarios + `/${id}/admin`)
+  }
 }

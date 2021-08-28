@@ -1,0 +1,56 @@
+<div [@lista-animacao]='estado'>
+  <div class="container">
+    <div class="row espacamento-baixo">
+      <div class="col">
+        <form [formGroup]="formulario">
+          <div class="row">
+            <div class="col-md-3">
+              <input type="text" *ngIf="formulario.get('pesquisarPor')?.value == 'nome'" formControlName="nome"
+                class="form-control" placeholder="Pesquisar por nome">
+              <input type="text" *ngIf="formulario.get('pesquisarPor')?.value == 'email'" formControlName="email"
+                class="form-control" placeholder="Pesquisar por email">
+            </div>
+            <div class="col-md-2">
+              <select formControlName="pesquisarPor" class="form-select">
+                <option>nome</option>
+                <option>email</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="usuarioPerfilModelPage != undefined">
+      <div class="col">
+        <h1 class="text-center espacamento-baixo">Usúarios do Sistemas</h1>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Código</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Email</th>
+              <th scope="col">Perfil</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usuario of usuarioPerfilModelPage?.content">
+              <td>{{usuario.id}}</td>
+              <td>{{usuario.nome}}</td>
+              <td>{{usuario.email}}</td>
+              <td>{{usuario.perfil}}</td>
+              <td><button *ngIf="usuario.perfil == 'Administrador'" (click)="tirarAdmin(usuario.id)"
+                  class="btn btn-danger">Tirar Admin</button> <button *ngIf="usuario.perfil == 'Cliente'"
+                  class="btn btn-primary" (click)="darAdmin(usuario.id)">Tornar Admin</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <pagination [boundaryLinks]="true" [itemsPerPage]="tamanho" (pageChanged)="pageChanged($event)"
+          [totalItems]="usuarioPerfilModelPage!.totalElements" previousText="&lsaquo;" nextText="&rsaquo;"
+          firstText="&laquo;" lastText="&raquo;">
+        </pagination>
+      </div>
+    </div>
+  </div>
+</div>
