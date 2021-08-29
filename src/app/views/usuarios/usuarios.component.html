@@ -24,10 +24,10 @@
     <div class="row" *ngIf="usuarioPerfilModelPage != undefined">
       <div class="col">
         <h1 class="text-center espacamento-baixo">Usúarios do Sistemas</h1>
-        <table class="table">
+        <table class="table table-dark table-striped">
           <thead class="thead-dark">
             <tr>
-              <th scope="col">Código</th>
+              <th class="text-center" scope="col">Código</th>
               <th scope="col">Nome</th>
               <th scope="col">Email</th>
               <th scope="col">Perfil</th>
@@ -36,7 +36,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let usuario of usuarioPerfilModelPage?.content">
-              <td>{{usuario.id}}</td>
+              <th class="text-center">{{usuario.id}}</th>
               <td>{{usuario.nome}}</td>
               <td>{{usuario.email}}</td>
               <td>{{usuario.perfil}}</td>

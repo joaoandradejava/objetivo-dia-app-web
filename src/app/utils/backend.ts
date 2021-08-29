@@ -33,4 +33,7 @@ export class Backend {
     return this.servidor + `usuarios/${usuarioId}/feedbacks`
   }
 
+  public static artigos(): string {
+    return this.servidor + 'artigos'
+  }
 }

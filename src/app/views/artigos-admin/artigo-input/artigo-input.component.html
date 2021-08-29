@@ -1,0 +1,87 @@
+<div class="container" [@lista-animacao]='estado'>
+  <div class="row">
+    <div class="col">
+      <a class="link-primary" [routerLink]="['/artigos-admin']">Voltar</a>
+      <h1 class="text-center">Artigo</h1>
+      <form [formGroup]="formulario">
+        <div class="form-group">
+          <label for="titulo">Titulo</label>
+          <input type="text" [ngClass]="getCssFormulario('titulo')" placeholder="Qual o titulo?"
+            formControlName="titulo" id="titulo" class="form-control">
+          <div *ngIf="formulario.get('titulo')?.getError('required')" class="invalid-feedback">
+            {{mensagemDeCampoObrigatorio('Titulo')}}
+          </div>
+          <div
+            *ngIf="formulario.get('titulo')?.getError('minlength') || formulario.get('titulo')?.getError('maxlength')"
+            class="invalid-feedback">
+            {{mensagemDeTamanhoMinimoEMaximo('Titulo', 1, 255)}}
+          </div>
+
+        </div>
+        <div class="form-group">
+          <label for="autor">Autor</label>
+          <input type="text" [ngClass]="getCssFormulario('autor')" placeholder="Qual é o autor?" formControlName="autor"
+            id="autor" class="form-control">
+          <div *ngIf="formulario.get('autor')?.getError('required')" class="invalid-feedback">
+            {{mensagemDeCampoObrigatorio('Autor')}}
+          </div>
+          <div *ngIf="formulario.get('autor')?.getError('minlength') || formulario.get('autor')?.getError('maxlength')"
+            class="invalid-feedback">
+            {{mensagemDeTamanhoMinimoEMaximo('Autor', 1, 255)}}
+          </div>
+
+        </div>
+        <div class="form-group">
+          <label for="descricao">Descrição</label>
+          <input type="text" [ngClass]="getCssFormulario('descricao')" placeholder="Coloque uma descrição do artigo"
+            formControlName="descricao" id="descricao" class="form-control">
+
+          <div *ngIf="formulario.get('descricao')?.getError('required')" class="invalid-feedback">
+            {{mensagemDeCampoObrigatorio('Descrição')}}
+          </div>
+          <div
+            *ngIf="formulario.get('descricao')?.getError('minlength') || formulario.get('descricao')?.getError('maxlength')"
+            class="invalid-feedback">
+            {{mensagemDeTamanhoMinimoEMaximo('Descrição', 1, 255)}}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="avatar-url">Avatar Url</label>
+          <input type="text" [ngClass]="getCssFormulario('avatarUrl')"
+            placeholder="https://img2.gratispng.com/20180424/cbq/kisspng-article-publishing-research-academic-journal-scien-searchlight-5adee6edb6fc29.7382224315245575497495.jpg"
+            formControlName="avatarUrl" id="avatar-url" class="form-control">
+
+          <div *ngIf="formulario.get('avatarUrl')?.getError('required')" class="invalid-feedback">
+            {{mensagemDeCampoObrigatorio('Avatar Url')}}
+          </div>
+
+        </div>
+
+        <div class="form-group" formArrayName="categoria">
+          <label for="categoria">Categoria</label>
+          <select [ngClass]="getCssFormulario('categoria.id')" class="form-select" id="categoria" formControlName="id">
+            <option value="" selected disabled hidden>Selecione a categoria do artigo</option>
+            <option *ngFor="let categoria of categorias" [value]="categoria.id">{{categoria.nome}}</option>
+          </select>
+
+          <div *ngIf="formulario.get('categoria.id')?.getError('required')" class="invalid-feedback">
+            Selecione uma Categoria!
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="conteudo">Conteudo</label>
+          <ckeditor [ngClass]="getCssFormulario('conteudo')" [editor]="Editor" id="conteudo" formControlName="conteudo"
+            [config]="config"></ckeditor>
+          <div *ngIf="formulario.get('conteudo')?.getError('required')" class="invalid-feedback">
+            {{mensagemDeCampoObrigatorio('Conteudo')}}
+          </div>
+
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" [disabled]="formulario.invalid" (click)="salvar()">{{textoBotao}}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

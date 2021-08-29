@@ -21,7 +21,8 @@ const routes: Routes = [
   { path: 'anotacao-input/:id', loadChildren: () => import('./views/anotacao-input/anotacao-input.module').then(m => m.AnotacaoInputModule), canActivate: [AutenticadoGuard] },
   { path: 'feedback', loadChildren: () => import('./views/feedback/feedback.module').then(m => m.FeedbackModule), canActivate: [AutenticadoGuard] },
   { path: 'categorias', loadChildren: () => import('./views/categorias/categorias.module').then(m => m.CategoriasModule), canActivate: [AutenticadoGuard, AdministradorGuard] },
-  { path: 'usuarios', loadChildren: () => import('./views/usuarios/usuarios.module').then(m => m.UsuariosModule), canActivate: [AutenticadoGuard, AdministradorGuard] }
+  { path: 'usuarios', loadChildren: () => import('./views/usuarios/usuarios.module').then(m => m.UsuariosModule), canActivate: [AutenticadoGuard, AdministradorGuard] },
+  { path: 'artigos-admin', loadChildren: () => import('./views/artigos-admin/artigos-admin.module').then(m => m.ArtigosAdminModule), canActivate: [AutenticadoGuard, AdministradorGuard] }
 
 ];
 

@@ -1,0 +1,55 @@
+<div class="container" [@lista-animacao]='estado'>
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-success" [routerLink]="['/artigos-admin/artigo-input']"
+        routerLinkActive="router-link-active">
+        <i-bs name="plus-circle" width="20" height="20">
+        </i-bs> Novo Artigo
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col" *ngIf="!isPossuiArtigo()">
+      <h1 class="text-center">O Sistema não tem nenhum artigo publicado!</h1>
+    </div>
+
+    <div class="col" *ngIf="isPossuiArtigo()">
+      <h1 class="text-center espacamento-baixo">Artigos</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Titulo</th>
+            <th>Descrição</th>
+            <th>Editar</th>
+            <th>Deletar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let artigo of artigoModelPage?.content">
+            <td>{{artigo.id}}</td>
+            <td>{{artigo.titulo}}</td>
+            <td>{{artigo.descricao}}</td>
+            <td><button class="btn btn-primary" [routerLink]="['artigo-input', artigo.id]">Editar</button></td>
+            <td><button class="btn btn-danger" (click)="openModal(confirmTemplate, artigo.id)">Deletar</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pagination (pageChanged)="pageChanged($event)" [boundaryLinks]="true" [itemsPerPage]="tamanho"
+        [totalItems]="artigoModelPage!.totalElements" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+        lastText="&raquo;">
+
+      </pagination>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #confirmTemplate>
+  <div class="modal-body text-center">
+    <p>Deseja realmente deletar este artigo?</p>
+    <button type="button" class="btn btn-default" (click)="deletarPorId()">Yes</button>
+    <button type="button" class="btn btn-primary" (click)="modalRef?.hide()">No</button>
+  </div>
+</ng-template>

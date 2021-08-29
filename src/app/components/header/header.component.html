@@ -49,6 +49,11 @@
               <i-bs name="person-fill" width="20" height="20">
               </i-bs>
             </a></li>
+          <li role="menuitem" *ngIf="isAdmin()"><a class="dropdown-item" [routerLink]="['/artigos-admin']"
+              routerLinkActive="router-link-active">Artigos do Sistema
+              <i-bs name="file-earmark-medical-fill" width="20" height="20">
+              </i-bs>
+            </a></li>
           <li role="menuitem"><a class="dropdown-item" [routerLink]="['/deletar-conta']"
               routerLinkActive="router-link-active">Deletar Conta <i-bs name="trash" width="20" height="20">
               </i-bs></a></li>
