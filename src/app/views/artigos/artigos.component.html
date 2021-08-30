@@ -1,0 +1,19 @@
+<div class="container" [@lista-animacao]='estado'>
+  <div class="row">
+    <div class="col" *ngIf="!isPossuiArtigo()">
+      <h1 class="text-center">Ainda não foi publicado nenhum artigo. Aguarde a primeira publicação do artigo</h1>
+    </div>
+    <div class="col" *ngIf="isPossuiArtigo()">
+      <h1 class="text-center espacamento-baixo">Artigos Publicados</h1>
+      <div class="cards-artigos">
+        <app-card-artigo [routerLink]="['/artigos/artigo', artigo.id]" *ngFor="let artigo of artigoModelPage?.content"
+          [artigoModel]="artigo"></app-card-artigo>
+      </div>
+      <pagination [boundaryLinks]="true" (pageChanged)="pageChanged($event)" [itemsPerPage]="tamanho"
+        [totalItems]="artigoModelPage!.totalElements" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+        lastText="&raquo;">
+
+      </pagination>
+    </div>
+  </div>
+</div>

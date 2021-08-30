@@ -21,6 +21,7 @@
             <th>Código</th>
             <th>Titulo</th>
             <th>Descrição</th>
+            <th>Categoria</th>
             <th>Editar</th>
             <th>Deletar</th>
           </tr>
@@ -30,6 +31,7 @@
             <td>{{artigo.id}}</td>
             <td>{{artigo.titulo}}</td>
             <td>{{artigo.descricao}}</td>
+            <td>{{artigo.categoria.nome}}</td>
             <td><button class="btn btn-primary" [routerLink]="['artigo-input', artigo.id]">Editar</button></td>
             <td><button class="btn btn-danger" (click)="openModal(confirmTemplate, artigo.id)">Deletar</button></td>
           </tr>

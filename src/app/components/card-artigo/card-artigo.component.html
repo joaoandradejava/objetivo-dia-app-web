@@ -1,0 +1,19 @@
+<div class="card-artigo">
+  <div class="card-conteudo">
+    <div class="card-img">
+      <img class="img-thumbnail" [src]="artigoModel?.avatarUrl" alt="">
+    </div>
+    <div>
+      <h4>{{artigoModel?.titulo}}</h4>
+      <p>{{artigoModel?.descricao}}</p>
+    </div>
+  </div>
+  <div>
+    <hr>
+    <span>Data da publicação: {{artigoModel?.dataPublicacao | date}}</span>
+    <br>
+    <span>Data da Atualização: {{artigoModel?.dataAtualizacao | date}}</span>
+    <br>
+    <h6 class="text-center espacamento-cima">{{artigoModel!.categoria.nome}} <img [src]="artigoModel!.categoria.avatarUrl" width="25px"></h6>
+  </div>
+</div>

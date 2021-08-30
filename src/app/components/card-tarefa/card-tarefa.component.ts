@@ -11,8 +11,8 @@ import { MensagemService } from 'src/app/services/mensagem.service';
   styleUrls: ['./card-tarefa.component.scss'],
   animations: [
     trigger('mudanca-cor', [
-      state('nao-feito', style({opacity: 1, backgroundColor: 'red'})),
-      state('feito', style({opacity: 1, backgroundColor: 'chartreuse'})),
+      state('nao-feito', style({opacity: 1, backgroundColor: '#ff2b2bfd'})),
+      state('feito', style({opacity: 1, backgroundColor: '#408140'})),
       transition('feito <=> nao-feito', [
         animate('100ms 0s ease-in-out', keyframes([
           style({opacity: 1, offset: 0}),

@@ -1,15 +1,13 @@
-import { MensagemService } from 'src/app/services/mensagem.service';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { ArtigoModelPage } from './../../models/artigo-model-page';
 import { ArtigoService } from './../../services/artigo.service';
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { trigger, transition, query, animate, keyframes, style } from '@angular/animations';
 
 @Component({
-  selector: 'app-artigos-admin',
-  templateUrl: './artigos-admin.component.html',
-  styleUrls: ['./artigos-admin.component.scss'],
+  selector: 'app-artigos',
+  templateUrl: './artigos.component.html',
+  styleUrls: ['./artigos.component.scss'],
   animations: [
     trigger('lista-animacao', [
       transition(':enter', query('*', [
@@ -28,17 +26,14 @@ import { trigger, transition, query, animate, keyframes, style } from '@angular/
     ])
   ]
 })
-export class ArtigosAdminComponent implements OnInit {
+export class ArtigosComponent implements OnInit {
   estado: string = ''
 
-  modalRef?: BsModalRef;
-
   artigoModelPage?: ArtigoModelPage
+  tamanho: number = 6
   paginaAtual: number = 0
-  tamanho: number = 10
-  idSelecionado: number = -1;
 
-  constructor(private artigoService: ArtigoService, private modalService: BsModalService, private mensagemService: MensagemService) { }
+  constructor(private artigoService: ArtigoService) { }
 
   ngOnInit(): void {
     this.buscarTodos()
@@ -56,22 +51,6 @@ export class ArtigosAdminComponent implements OnInit {
 
   pageChanged(event: PageChangedEvent): void {
     this.paginaAtual = event.page - 1
-
     this.buscarTodos()
   }
-
-  openModal(template: TemplateRef<any>, id: number) {
-    this.idSelecionado = id
-    this.modalRef = this.modalService.show(template);
-  }
-
-  deletarPorId(): void {
-    this.artigoService.deletarPorId(this.idSelecionado).subscribe(data => {
-      this.mensagemService.mostrarMensagemDeSucesso('Artigo deletado com sucesso!')
-      this.paginaAtual = 0;
-      this.buscarTodos()
-      this.modalRef?.hide()
-    })
-  }
-
 }

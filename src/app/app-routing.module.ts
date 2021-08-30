@@ -22,7 +22,8 @@ const routes: Routes = [
   { path: 'feedback', loadChildren: () => import('./views/feedback/feedback.module').then(m => m.FeedbackModule), canActivate: [AutenticadoGuard] },
   { path: 'categorias', loadChildren: () => import('./views/categorias/categorias.module').then(m => m.CategoriasModule), canActivate: [AutenticadoGuard, AdministradorGuard] },
   { path: 'usuarios', loadChildren: () => import('./views/usuarios/usuarios.module').then(m => m.UsuariosModule), canActivate: [AutenticadoGuard, AdministradorGuard] },
-  { path: 'artigos-admin', loadChildren: () => import('./views/artigos-admin/artigos-admin.module').then(m => m.ArtigosAdminModule), canActivate: [AutenticadoGuard, AdministradorGuard] }
+  { path: 'artigos-admin', loadChildren: () => import('./views/artigos-admin/artigos-admin.module').then(m => m.ArtigosAdminModule), canActivate: [AutenticadoGuard, AdministradorGuard] },
+  { path: 'artigos', loadChildren: () => import('./views/artigos/artigos.module').then(m => m.ArtigosModule), canActivate: [AutenticadoGuard] }
 
 ];
 
